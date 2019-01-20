@@ -1,0 +1,22 @@
+#search_block {
+  background: url(../image/img-principal.jpg) no-repeat center;
+  background-size: cover;
+  height: 800px; }
+
+nav,
+#logo {
+  display: inline-block;
+  vertical-align: top; }
+
+nav li {
+  list-style: none;
+  display: inline-block;
+  color: #818181; }
+  nav li a {
+    color: #818181; }
+    nav li a:hover {
+      color: #414141; }
+  nav li:after {
+    content: "|"; }
+
+/*# sourceMappingURL=header.css.map */

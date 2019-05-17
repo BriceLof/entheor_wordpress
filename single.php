@@ -81,7 +81,7 @@ $category = get_the_category($post->ID);
                                 <p class="extract">
                                     <?php echo (strlen($article->post_excerpt) > 240 ) ? substr($article->post_excerpt, 0, 240).' ...' : $article->post_excerpt; ?>
                                 </p>
-                                <a href="<?php echo get_permalink($article->ID) ?>" target="_blank" class="btn center btn_see_more" id="">+ En savoir plus</a>
+                                <a href="<?php echo get_permalink($article->ID) ?>" class="btn center btn_see_more" id="">+ En savoir plus</a>
                             </div>
                         </article>
                     <?php endif; ?>

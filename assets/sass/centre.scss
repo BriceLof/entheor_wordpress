@@ -1,0 +1,413 @@
+@import "main";
+
+#block_header_photo{
+  height:200px;
+  text-align: center;
+  color: white;
+  position: relative;
+  h1{
+    padding-bottom: 10px;
+    font-size: 38px;
+    position: relative;
+  }
+  h2{
+    font-size: 25px;
+    position: relative;
+  }
+  #note{
+    position: relative;
+    #moyenne_note, #moyenne_note_stars{
+      display: inline-block;
+      vertical-align: top;
+    }
+    #moyenne_note{
+      color: #f4cd1f;
+      font-weight: bold;
+      font-size: 20px;
+      margin-right: 5px;
+      margin-top: 3px;
+    }
+    #moyenne_note_stars{
+
+    }
+  }
+  #overlay{
+    background-color: #00000075;;
+    width:100%;
+    height:100%;
+    position: absolute;
+  }
+}
+
+#content{
+  padding-top: 40px;
+  #block_content_centre{
+    #tab_list{
+       ul{
+         .ui-state-active{
+           a{
+             color: $green;
+             border-bottom: 2px solid $green;
+           }
+         }
+         li{
+           a{
+             padding-bottom: 12px;
+             display: block;
+             color: $grey;
+             font-size: 25px;
+             margin: 0 20px 0 20px;
+             text-decoration: none;
+             &:hover{
+               color: $green;
+               border-bottom: 2px solid $green;
+             }
+           }
+           display: inline-block;
+           vertical-align: top;
+           list-style: none;
+         }
+       }
+     }
+
+    #content_block{
+      padding: 8px 35px;
+      .img_focus{
+        height:250px;
+      }
+      .block_img_then{
+        img{
+          height:120px;
+          margin-bottom: 10px;
+        }
+      }
+
+      #tab_trainer{
+        #title{
+          margin-bottom: 20px;
+          font-size: 21px;
+        }
+        article{
+          border: 1px solid #f1f1f1;
+          border-radius: 5px;
+          box-shadow: 1px 4px 5px #f5f5f5;
+          margin-bottom: 30px;
+          .description_trainer{
+            padding: 25px 25px;
+            .trainer_name{
+              color:$green;
+              font-weight: bold;
+              font-style: italic;
+            }
+          }
+        }
+      }
+
+      #tab_review{
+        article{
+          background-color: $lightGrey;
+          padding: 25px 25px;
+          border-radius: 5px;
+          margin-bottom: 30px;
+          .date,.note{
+            display: inline-block;
+            vertical-align: top;
+          }
+          .note{
+            float: right;
+            img{
+              width: 22px;
+            }
+          }
+          .reviewer{
+            .reviewer_domain{
+              color: $green;
+            }
+          }
+          .detail_review{
+            p{
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  aside{
+
+    #etre_rappele{
+      background-color: $green !important;
+      color: white !important;
+      padding: 8px;
+      text-align: center;
+    }
+    #form_mise_en_relation{
+      border: 1px solid $lightGrey;
+      padding: 10px;
+      margin-top: -16px;
+      font-style: italic;
+      input, select{
+        border: 1px solid $lightGrey;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin: auto;
+        width: 100%;
+        display: block;
+        color: $grey;
+        margin-bottom: 12px;
+      }
+      #civility_block{
+        .civility_choice{
+          .selected{
+            border: 2px solid $green;
+          }
+          p{
+            border: 1px solid $lightGrey;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .btn_submit_form_mer{
+        text-align: center;
+        margin: auto;
+        display: block;
+        padding: 6px 40px;
+      }
+    }
+
+    #information{
+      border:1px solid $lightGrey;
+      border-radius: 5px;
+      box-shadow: 1px 4px 5px #f5f5f5;
+      padding: 23px 15px 5px 20px;
+      margin-top: 30px;
+      .title{
+        font-weight:bold;
+        font-size: 13px;
+      }
+      ul{
+        li{
+          list-style: none;
+        }
+      }
+    }
+  }
+
+  #localisation{
+    margin-top: 10px;
+    #block_map{
+      padding: 0 34px;
+      #map{
+        width: 100%;
+        height: 300px;
+        background-color: $grey;
+      }
+    }
+    aside{
+      #information_place{
+        border:1px solid $lightGrey;
+        border-radius: 5px;
+        box-shadow: 1px 4px 5px #ececec;
+        padding: 23px 15px 5px 20px;
+        .title{
+          font-weight:bold;
+          font-size: 13px;
+        }
+        ul{
+          li{
+            list-style: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+#diagnostic{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 30px;
+  background-color: $lightGrey;
+  h3, h2{
+    color:$green;
+  }
+  p{
+    margin: 24px 0;
+  }
+  button{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+#form_step_diagnostic{
+  background-color: white;
+  #form_vae_step{
+    display: none;
+    width:50%;
+    margin: auto;
+    margin-bottom: 20px;
+    form{
+      #block_progress_bar{
+        background-color: $lightGrey;
+        width:70%;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 3px;
+        margin-bottom: 30px;
+        #progress_bar{
+          height:9px;
+          width:20%;
+          background-color: $green;
+        }
+      }
+      .step{
+        .title{
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 25px;
+        }
+      }
+      input, select{
+        border: 1px solid #97bd12;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin: auto;
+        width: 50%;
+        display: block;
+        color: $grey;
+        margin-bottom: 12px;
+      }
+      #experience_block{
+        width:70%;
+        margin: auto;
+        .experience_choice{
+          p{
+            border: 1px solid $green;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      #status_block{
+        width:70%;
+        margin: auto;
+        .status_choice{
+          p{
+            border: 1px solid $green;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      #degree_block{
+        width:70%;
+        margin: auto;
+        .degree_choice{
+          p{
+            border: 1px solid $green;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      #reason_block{
+        width:100%;
+        margin: auto;
+        .reason_choice{
+          p{
+            border: 1px solid $green;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+          input{
+            width:100%;
+          }
+        }
+      }
+      .modal-footer{
+        border: none;
+        button{
+          width:50%;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 767.98px) {
+
+  #block_header_photo {
+    h1 {
+      font-size: 20px;
+    }
+    h2 {
+      font-size: 18px;
+      position: relative;
+    }
+    #note {
+      #moyenne_note {
+        font-size: 16px;
+      }
+      #moyenne_note_stars {
+        img{
+          width:16px;
+        }
+      }
+    }
+  }
+
+  #content{
+    #block_content_centre{
+      #tab_list{
+        ul{
+          li{
+            a{
+              font-size: 18px;
+            }
+          }
+        }
+      }
+      #content_block{
+        .img_focus{
+          margin-bottom:10px
+        }
+      }
+    }
+  }
+
+  #form_step_diagnostic{
+    #form_vae_step{
+      width:90%;
+    }
+  }
+
+}

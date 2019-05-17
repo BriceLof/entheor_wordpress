@@ -1,0 +1,41 @@
+@import "main";
+
+footer{
+  padding-top: 40px;
+  background-color: #343434;
+  #links_footer{
+    nav{
+      li{
+        list-style: none;
+        display: inline-block;
+        color:$green;
+        a {
+          color: #d0d0d0 !important;
+          font-weight: bold;
+          padding: 0 5px;
+          &:hover {
+            color: $text-color;
+          }
+        }
+        &:after{
+          content: " |";
+        }
+
+      }
+
+      #social_network{
+        position: absolute;
+        right: 20px;
+        margin-top: -43px;
+        li{
+          a{
+
+          }
+          &:after{
+            content: "";
+          }
+        }
+      }
+    }
+  }
+}

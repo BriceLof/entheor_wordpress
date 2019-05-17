@@ -1,0 +1,597 @@
+/*
+Theme Name: entheor
+Author: Brice Lof
+Description: Template WordPress pour site entheor.com
+Version: 0.0.1
+*/
+@import "assets/sass/main";
+
+#search_block{
+  position: relative;
+  height:500px !important;
+  overflow: hidden;
+  #text_button_search{
+    font-size: 21px;
+    .block_intro_search{
+      p{
+        width: fit-content;
+        width: -moz-fit-content;
+        margin: auto;
+        text-align: left;
+        font-weight: bold;
+      }
+    }
+    button{
+      margin-top: 33px !important;
+      font-size: 21px;
+      font-weight: bold;
+      margin: 0 26px;
+    }
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 33%;
+    right: 0;
+    color: white;
+  }
+
+  #form_search_center_home{
+    #zip_search_center_submit{
+      padding: 9px 60px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    input{
+      display: inline-block;
+      vertical-align: top;
+      padding: 8px 15px;
+      border-radius: 4px;
+      border: none;
+      margin-top: 31px;
+    }
+    #zip_search_center_submit{
+      //display: block;
+    }
+  }
+}
+
+#three_step{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  picture{
+    height: 200px;
+    display: block;
+    img{
+
+    }
+  }
+  .introduction{
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+  .description_img{
+    .title{
+      font-weight: bold;
+    }
+    .sub_title{
+      font-size: 13px;
+    }
+  }
+
+  #form_vae_step{
+    display: none;
+    width:50%;
+    margin: auto;
+    form{
+      #block_progress_bar{
+        background-color: $lightGrey;
+        width:70%;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 3px;
+        margin-bottom: 30px;
+        #progress_bar{
+          height:9px;
+          width:20%;
+          background-color: $green;
+        }
+      }
+      .step{
+        .title{
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 25px;
+        }
+      }
+      input, select{
+        border: 1px solid #97bd12;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin: auto;
+        width: 50%;
+        display: block;
+        color: $grey;
+        margin-bottom: 12px;
+      }
+      #experience_block{
+        width:70%;
+        margin: auto;
+        .experience_choice{
+          p{
+            border: 1px solid $green;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      #status_block{
+        width:70%;
+        margin: auto;
+        .status_choice{
+          p{
+            border: 1px solid $green;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      #degree_block{
+        width:70%;
+        margin: auto;
+        .degree_choice{
+          p{
+            border: 1px solid $green;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      #reason_block{
+        width:100%;
+        margin: auto;
+        .reason_choice{
+          p{
+            border: 1px solid $green;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+          input{
+            width:100%;
+          }
+        }
+      }
+      .modal-footer{
+        border: none;
+        button{
+          width:50%;
+          margin: auto;
+        }
+      }
+    }
+  }
+  #btn_launch_form{
+    margin-top: 20px;
+  }
+}
+
+#numbers{
+  padding-top: 40px;
+  background-color: $lightGrey;
+  padding: 35px 0px 17px 0;
+  .numbers_detail{
+    text-align: center;
+    p{
+      color:$green;
+      font-size: 35px;
+      line-height: 20px;
+      font-weight: bold;
+      span{
+        color: $text-color;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+
+.reviews{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  h2{
+    margin-bottom: 40px;
+  }
+  article{
+    .block_article{
+      text-align: center;
+      background-color: $lightGrey;
+      width: 85%;
+      margin: auto;
+      padding: 32px 15px 32px 15px;
+      border-radius: 5px;
+      min-height: 400px;
+      .date{
+        text-align: left;
+        margin-top: -20px;
+        margin-left: 3px;
+        margin-bottom: 40px;
+      }
+      .note{
+        margin-bottom: 50px;
+        img{
+          width:22px;
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+      .domain{
+        color:$green;
+      }
+      .extract{
+        font-size: 15px;
+        i{
+          span{
+            float: right;
+            font-weight: bold;
+            cursor: pointer;
+            &:hover{
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      picture{
+        img{
+          width:120px;
+          border-radius: 60px;
+          margin: auto;
+          margin-bottom: 15px;
+        }
+      }
+      .info_review{
+
+      }
+    }
+  }
+  #block_btn_more_reviews{
+    text-align: center;
+    margin-top: 20px;
+  }
+  .owl-nav{
+    .owl-prev{
+      position:absolute;
+      top:24%;
+      left:-3%;
+    }
+    .owl-next{
+      position:absolute;
+      top:24%;
+      right:-3%;
+    }
+  }
+}
+
+
+#trainer{
+  height:500px !important;
+  overflow: hidden;
+  position: relative;
+  padding-top: 0;
+  img{
+
+  }
+  #block_trainer_text{
+    h2{
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    position: absolute;
+    top: 5%;
+    right: 0;
+  }
+}
+
+#article_focus{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  article{
+    //padding: 0 50px;
+    .block_article{
+      padding: 0 13px;
+      h2{
+        a{
+          text-decoration: none;
+          color: $text-color;
+        }
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      picture{
+        width:100%;
+        height:200px;
+        display: block;
+      }
+      .extract{
+        margin-top: 20px;
+        min-height: 160px;
+      }
+      .btn_see_more{
+        width: 100%;
+      }
+    }
+
+  }
+  .owl-nav{
+    .owl-prev{
+      position:absolute;
+      top:24%;
+      left:-7%;
+    }
+    .owl-next{
+      position:absolute;
+      top:24%;
+      right:-7%;
+    }
+  }
+}
+
+
+#vae_distance{
+  height:500px !important;
+  overflow: hidden;
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 40px;
+  img{
+
+  }
+  #vae_distance_text{
+    h2{
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    p{
+      font-size: 23px;
+    }
+    a{
+      padding: 10px 20px;
+      margin-top: 30px;
+      font-weight: bold;
+    }
+    position: absolute;
+    top: 5%;
+    color: white;
+    left: 0;
+    right: 0;
+  }
+}
+
+
+#program{
+  height:500px !important;
+  overflow: hidden;
+  position: relative;
+  padding-top: 0;
+  img{
+
+  }
+  #block_program_text{
+    h2{
+      margin-top: 25px;
+      margin-bottom: 50px;
+    }
+    position: absolute;
+    top: 5%;
+    left: 0;
+    text-align: center;
+  }
+}
+
+#actu{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  h2{
+    margin-bottom: 18px;
+    margin-left: 12px;
+  }
+  article{
+    //padding: 0 50px;
+    .block_article{
+      padding: 0 13px;
+      h3{
+        a{
+          font-size: 19px;
+          font-weight: bold;
+          font-size: 17px;
+          margin-top: 10px;
+          color: $text-color;
+          text-decoration: none;
+          display: inline-table;
+        }
+      }
+      picture{
+        width: 100%;
+        height: 200px;
+        display: block;
+      }
+      .extract{
+        margin-top: 20px;
+        min-height: 160px;
+      }
+      .btn_see_more{
+        width: 100%;
+      }
+    }
+
+  }
+  #btn_voir_plus_actu{
+    margin: auto;
+    display: block;
+    width: fit-content;
+    width: -moz-fit-content;
+  }
+}
+
+#contact_us{
+  height:500px !important;
+  overflow: hidden;
+  position: relative;
+  padding-top: 0;
+  img{
+
+  }
+  #contact_us_text{
+    h2{
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    p{
+      font-size: 23px;
+    }
+    a{
+      padding: 10px 20px;
+      margin-top: 30px;
+      font-weight: bold;
+    }
+    position: absolute;
+    top: 5%;
+    color: white;
+    left: 0;
+    right: 0;
+    text-align:center;
+  }
+}
+
+
+#best_degree{
+  background-color: #343434;
+  color: #d0d0d0;
+  text-align: center;
+  padding: 34px 0 4px 0px;
+  .introduction{
+    margin: 30px 0px;
+  }
+  #best_degree_block{
+    .best_degree_by_domain_block{
+      .best_degree_by_domain{
+        width: fit-content;
+        width: -moz-fit-content;
+        margin: auto;
+        text-align: left;
+        a{
+          color:#d0d0d0;
+        }
+      }
+    }
+
+  }
+}
+
+#training_around_you{
+  background-color: #343434;
+  color: #d0d0d0;
+  text-align: center;
+  padding: 10px 0 40px 0px;
+  .introduction{
+    margin: 30px 0px;
+  }
+  #training_around_you_block{
+    .training_around_you_by_city_block{
+      .training_around_you_by_city{
+        width: fit-content;
+        width: -moz-fit-content;
+        margin: auto;
+        text-align: left;
+        a{
+          color:#d0d0d0;
+        }
+      }
+    }
+
+  }
+
+}
+
+#block_contact_form{
+  //background-color: #efefef;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  input{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 28px;
+  }
+  input[type=submit]{
+    display: block;
+    margin: auto;
+    padding: 10px 50px;
+    font-weight: bold;
+  }
+  textarea{
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  .label{
+    font-weight: bold;
+  }
+}
+
+#block_confirmation_mer{
+  width:50%;
+  margin: auto;
+  .message_mail_sent{
+    text-align: center;
+    font-size: 20px;
+    border: 2px solid $green;
+    padding:50px 0px;
+    margin-top: 25px;
+    font-weight: bold;
+  }
+}
+
+
+.btn_back_home{
+  a{
+    display: block;
+    color: white;
+    padding: 12px 40px;
+  }
+  background-color: $green;
+  text-align: center;
+  width: fit-content;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  font-weight: bold;
+}
+
+
+@media (max-width: 767.98px) {
+  #three_step{
+    #form_vae_step{
+      width:90%;
+    }
+  }
+}

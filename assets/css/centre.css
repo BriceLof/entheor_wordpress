@@ -382,6 +382,12 @@ body header nav {
   width: 50%;
   margin: auto;
 }
+#form_step_diagnostic .error {
+  border: 1px solid red !important;
+}
+#form_step_diagnostic label.error {
+  display: none !important;
+}
 
 @media (max-width: 767.98px) {
   #block_header_photo h1 {

@@ -119,6 +119,27 @@ body header nav {
   border: none;
   margin-top: 31px;
 }
+#search_block #country_search {
+  vertical-align: top;
+  padding: 8px 15px;
+  border-radius: 4px;
+  border: none;
+  margin-top: 31px;
+}
+#search_block #city_search {
+  vertical-align: top;
+  padding: 7px 15px;
+  border-radius: 4px;
+  border: none;
+  margin-top: 31px;
+}
+#search_block #zip_search_center_submit_2 {
+  padding: 7px 60px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 31px;
+}
+
 #three_step {
   padding-top: 40px;
   padding-bottom: 40px;

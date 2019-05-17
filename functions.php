@@ -43,9 +43,12 @@ function add_js(){
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB919NmSoOAO6kmrPgpsQKWPvsTH1oneTU&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB919NmSoOAO6kmrPgpsQKWPvsTH1oneTU&callback=initMap&"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB919NmSoOAO6kmrPgpsQKWPvsTH1oneTU&libraries=places" async defer></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/additional-methods.min.js"></script>
     ';
     wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', false, 1.0, true);
     wp_enqueue_script( 'centre', get_template_directory_uri() . '/assets/js/centre.js', false, 1.0, true);
@@ -83,8 +86,8 @@ function submit_form_add_beneficiaire(){
     if (isset($_POST['formulaire_add_beneficiaire']))
     {
         $data = array(
-            //"codePostal" => (isset($_POST['country'])) ? '00000' : ((isset($_POST['zip'])) ? $_POST['zip'] : ''),
-            "codePostal" => (isset($_POST['zip'])) ? $_POST['zip'] : '',
+            "bureauId" => (isset($_POST['bureau'])) ? $_POST['bureau'] : null,
+            "codePostal" => (isset($_POST['zip_conso'])) ? $_POST['zip_conso'] : '',
             "domaineVae" => $_POST['domaine_activite'],
             "statut" => (isset($_POST['status'])) ? $_POST['status'] : '',
             "diplomeVise" => (isset($_POST['degree_wanted'])) ? $_POST['degree_wanted'] : '',
@@ -99,7 +102,7 @@ function submit_form_add_beneficiaire(){
             "experience" => (isset($_POST['experience'])) ? $_POST['experience'] : '',
             "motivation" => (isset($_POST['reason'])) ? $_POST['reason'] : '',
             "pays" => (isset($_POST['country'])) ? $_POST['country'] : 'FR',
-            //"ville" => (isset($_POST['city'])) ? $_POST['city'] : '',
+            "city" => (isset($_POST['city'])) ? $_POST['city'] : '',
         );
 
         // Lancement Curl pour insérer un bénéficiaire

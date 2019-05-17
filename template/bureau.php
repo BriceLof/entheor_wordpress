@@ -196,7 +196,7 @@ if ($err) {
                         <!-- Form : ajout beneficiaire -->
                         <div id="form_mer">
                             <form id="form_mise_en_relation" action='<?php echo admin_url( 'admin-post.php' ); ?>' method="post">
-                                <input type="hidden" name="zip" value="<?php echo $result->ville->cp ?>"/>
+                                <input type="hidden" name="bureau" value="<?php echo $result->id ?>"/>
                                 <?php
                                 set_query_var( 'idOffice', $result->id );
                                 get_template_part( 'template/form_mer');

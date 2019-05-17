@@ -79,15 +79,15 @@ global $wpdb;
                         }
                         ?>
 
-                        <select name="country" required>
+                        <select name="country" id="country_search" required>
                             <option value="">Pays</option>
                             <?php foreach ($result as $key => $name): ?>
                                 <option value="<?php echo $key ?>"><?php echo $name ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <input type="text" name="city" required placeholder="Ville"/>
+                        <input type="text" name="city" id="city_search" required placeholder="Ville"/>
                         <input type="submit" name="search_center_foreigner" value="Rechercher"
-                               id="zip_search_center_submit" class="btn">
+                               id="zip_search_center_submit_2" class="btn">
                     </form>
                 </div>
 

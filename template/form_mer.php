@@ -15,17 +15,9 @@ $idOffice = get_query_var('idOffice');
 <input type="email" name="email" placeholder="Email" required/>
 <input type="tel" name="telephone" placeholder="Téléphone" maxlength="10" required/>
 
-<!--<select name="time_preference" required>-->
-<!--    <option>Plage horaire préféré</option>-->
-<!--    <option value="Avant 12 heures">Avant 12 heures</option>-->
-<!--    <option value="Entre 12 et 14 heures">Entre 12 et 14 heures</option>-->
-<!--    <option value="Entre 14 et 16 heures">Entre 14 et 16 heures</option>-->
-<!--    <option value="Après 16 heures">Après 16 heures</option>-->
-<!--    <option value="Indifférent">Indifférent</option>-->
-<!--</select>-->
 
 <?php if ($idOffice != 290) : ?>
-    <input type="text" id="form_mer_zip" name="zip" placeholder="Votre code postal (5 chiffres)" maxlength="5"
+    <input type="text" id="form_mer_zip" name="zip_conso" placeholder="Votre code postal (5 chiffres)" maxlength="5"
            value="<?php echo $_SESSION['zip'] ?>" required/>
 <?php else: ?>
 
@@ -65,7 +57,7 @@ $idOffice = get_query_var('idOffice');
     ?>
 
 
-    <select name="country" required>
+    <select name="country" id="country_search" required>
         <option value="">Pays</option>
         <?php foreach ($result as $key => $name): ?>
             <?php if($key == $_SESSION['country']) : ?>
@@ -75,7 +67,7 @@ $idOffice = get_query_var('idOffice');
             <?php endif; ?>
         <?php endforeach; ?>
     </select>
-    <input type="text" name="city" value="<?php echo $_SESSION['city']; ?>" required placeholder="Ville" />
+    <input type="text" name="city"id="city_search" value="<?php echo $_SESSION['city']; ?>" required placeholder="Ville" />
 <?php endif; ?>
 
 

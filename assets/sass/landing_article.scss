@@ -1,0 +1,161 @@
+@import "main";
+
+.cover_img{
+  display: none;
+}
+#block_header_photo_landing{
+  height:200px;
+  position: relative;
+  text-align: center;
+  color: white;
+  background-size: cover !important;
+  h1{
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 38px;
+    position: relative;
+  }
+  #overlay{
+    background-color: #00000075;;
+    width:100%;
+    height:100%;
+    position: absolute;
+  }
+}
+
+#content{
+  #block_content_article{
+    h2,a{
+      color: $green;
+    }
+  }
+}
+
+#other_landings{
+  h2,a{
+    color: $green;
+  }
+  .h_article a{
+    color:$text-color;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+  }
+
+  position: relative;
+  h2{
+    position: absolute;
+    top: 17px;
+    background-color: white;
+    padding-right: 16px;
+  }
+  .line{
+    display: block;
+    width:100%;
+    height: 1px;
+    background-color: $text-color;
+    margin-bottom: 35px;
+  }
+  padding-top: 40px;
+  padding-bottom: 40px;
+  article{
+    //padding: 0 50px;
+    padding-left: 0;
+    .block_article{
+      padding: 0 13px;
+      h2{
+        position: initial;
+        a{
+          text-decoration: none;
+          color: $text-color;
+        }
+        margin: 12px 0px;
+      }
+      picture{
+        width:100%;
+        height:200px;
+        display: block;
+      }
+      .extract{
+        margin-top: 20px;
+        min-height: 160px;
+      }
+      .btn_see_more{
+        width: 100%;
+      }
+    }
+  }
+}
+
+#reviews_page{
+  margin-bottom: 40px;
+  #block_header_photo_landing {
+    margin-bottom: 40px;
+  }
+  h2{
+    margin-bottom: 40px;
+  }
+  article{
+    .block_article{
+      text-align: center;
+      background-color: $lightGrey;
+      width: 85%;
+      margin: auto;
+      padding: 32px 15px 32px 15px;
+      border-radius: 5px;
+      .date{
+        text-align: left;
+        margin-top: -20px;
+        margin-left: 3px;
+        margin-bottom: 40px;
+      }
+      .note{
+        margin-bottom: 50px;
+        img{
+          width:22px;
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+      picture{
+        img{
+          width:120px;
+          border-radius: 60px;
+          margin: auto;
+          margin-bottom: 15px;
+        }
+      }
+      .info_review{
+
+      }
+    }
+  }
+}
+
+#category_page{
+  margin-bottom: 40px;
+  #block_header_photo_landing {
+    margin-bottom: 60px;
+  }
+
+  h3{
+    margin-top: 12px;
+    margin-bottom: 15px;
+    a{
+      text-decoration: none;
+      color: $text-color;
+    }
+  }
+  picture{
+    width: 100%;
+    height: 200px;
+    display: block;
+  }
+}
+
+.category_page{
+  article{
+    margin-bottom: 40px;
+  }
+}
+

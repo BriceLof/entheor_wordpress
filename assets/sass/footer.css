@@ -1,0 +1,62 @@
+.btn {
+  background-color: #97bd12 !important;
+  color: white !important; }
+
+body {
+  color: #414141; }
+
+section {
+  padding-top: 40px;
+  padding-bottom: 40px; }
+
+.owl-nav {
+  font-size: 100px; }
+  .owl-nav .owl-prev {
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .owl-nav .owl-next {
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+footer {
+  background-color: #343434;
+  padding-bottom: 1px; }
+  footer #best_degree {
+    color: #d0d0d0;
+    text-align: center;
+    padding: 34px 0 4px 0px; }
+    footer #best_degree .introduction {
+      margin: 30px 0px; }
+    footer #best_degree #best_degree_block .best_degree_by_domain_block .best_degree_by_domain {
+      width: fit-content;
+      margin: auto;
+      text-align: left; }
+      footer #best_degree #best_degree_block .best_degree_by_domain_block .best_degree_by_domain a {
+        color: #d0d0d0; }
+  footer #training_around_you {
+    color: #d0d0d0;
+    text-align: center;
+    padding: 10px 0 40px 0px; }
+    footer #training_around_you .introduction {
+      margin: 30px 0px; }
+    footer #training_around_you #training_around_you_block .training_around_you_by_city_block .training_around_you_by_city {
+      width: fit-content;
+      margin: auto;
+      text-align: left; }
+      footer #training_around_you #training_around_you_block .training_around_you_by_city_block .training_around_you_by_city a {
+        color: #d0d0d0; }
+  footer #links_footer nav li {
+    list-style: none;
+    display: inline-block;
+    color: #97bd12; }
+    footer #links_footer nav li a {
+      color: #d0d0d0 !important;
+      font-weight: bold; }
+      footer #links_footer nav li a:hover {
+        color: #414141; }
+  footer #links_footer nav #social_network li:after {
+    content: ""; }
+
+/*# sourceMappingURL=footer.css.map */

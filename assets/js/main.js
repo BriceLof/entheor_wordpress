@@ -170,6 +170,10 @@ $(document).ready(function () {
             $(this).attr("data-error", "true");
     });
 
+    $("#email").rules("add", {
+        required: true,
+        email: true
+    })
 
     $("#city_search").rules("add", {
         required: true,

@@ -184,10 +184,10 @@ $(document).ready(function () {
 
     // Message validation mise en relation
     if (window.location.hash != '' && window.location.hash == "#confirmation_mer") {
-        $("#block_confirmation_mer").show()
-        setTimeout(function () {
-            $("#block_confirmation_mer").hide()
-        }, 4000);
+        $(".block_confirmation_mer").show()
+        $(".closed_popup").click(function(){
+            $(".block_confirmation_mer").hide()
+        })
     }
     // FIN Message validation mise en relation
 
@@ -331,4 +331,5 @@ function clearForm(form) {
     $(form).find("select").each(function () {
         $(this).find('option:selected').removeAttr('selected')
     })
+
 }

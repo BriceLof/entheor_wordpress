@@ -178,7 +178,7 @@ if ($err) {
                                             $datePublishRaw = $beneficiaire->avis[0]->date;
                                             $datePublishFinal = new DateTime($datePublishRaw);
                                             ?>
-                                            <p class="date">Avis publié le <?php echo $datePublishFinal->format('d/m/Y') ?></p>
+                                            <p class="date">Avis VAE publié le <?php echo $datePublishFinal->format('d/m/Y') ?></p>
                                             <div class="note stars">
                                                 <?php for ($j = 0; $j < 5; $j++) : ?>
                                                     <?php if ($j < $beneficiaire->avis[0]->noteGlobale) : ?>

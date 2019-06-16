@@ -21,7 +21,7 @@ global $wpdb;
             <div id="text_button_search" class="container text-uppercase">
                 <div class="block_intro_search">
                     <p>Pour chaque projet VAE, un interlocuteur dédié.<br>
-                        Trouvez le vôtre :
+                        Trouvez le vôtre :
                     </p>
                 </div>
                 <p id="block_btn_to_access_search_center">
@@ -70,7 +70,6 @@ global $wpdb;
                         ));
                         $response = curl_exec($curl);
                         $err = curl_error($curl);
-
                         curl_close($curl);
                         if ($err) {
                             echo "cURL Error #:" . $err;
@@ -95,6 +94,10 @@ global $wpdb;
         </section>
     </div>
 
+    <section id="confirmation_mer" class="block_confirmation_mer" style="display: none">
+        <span class="closed_popup">×</span>
+        <p class="message_mail_sent">Votre demande d’information a bien été enregistrée.<br>Un consultant vous contacte dans la journée.</p>
+    </section>
 
     <section id="three_step">
         <div class="container text-center">
@@ -162,11 +165,8 @@ global $wpdb;
                 <?php
                 // Lancement Curl pour récupérer le bureau
                 $url = "https://appli.entheor.com/web/api/advices?limit=6";
-
                 $auth = "devEntheo:3E5_yu*C";
-
                 $curl = curl_init();
-
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => $url,
                     CURLOPT_RETURNTRANSFER => true,
@@ -181,18 +181,13 @@ global $wpdb;
                     CURLOPT_SSL_VERIFYHOST => false,
                     CURLOPT_SSL_VERIFYPEER => false
                 ));
-
-
                 $response = curl_exec($curl);
                 $err = curl_error($curl);
-
                 curl_close($curl);
-
                 if ($err) {
                     echo "cURL Error #:" . $err;
                 } else {
                     $result = json_decode($response);
-
                 }
                 ?>
                 <div class="owl-carousel">
@@ -204,8 +199,11 @@ global $wpdb;
                                 $datePublishRaw = $avis->date;
                                 $datePublishFinal = new DateTime($datePublishRaw);
                                 ?>
-                                <p class="date"><i>Avis VAE publié
-                                        le <?php echo $datePublishFinal->format('d/m/Y') ?></i></p>
+                                <p class="date">
+                                    <i>Avis VAE publié le <?php echo $datePublishFinal->format('d/m/Y') ?><br>
+                                        Diplôme visé : <?php echo $avis->beneficiaire->diplomeVise ?>
+                                    </i>
+                                </p>
                                 <p class="info_review">
                                     <i>
                                         <b>
@@ -332,16 +330,8 @@ global $wpdb;
                      width="90px"/>
                 <h2 class="text-uppercase">LE PROGRAMME POUR<br> ACCOMPAGNER VOS COLLABORATEURS</h2>
                 <p>
-                    Lorem Ipsum est un générateur de faux textes aléatoires. Vous choisissez le nombre de paragraphes,
-                    de mots ou de listes. Vous obtenez alors un texte aléatoire que vous pourrez ensuite utiliser
-                    librement dans vos maquettes.
-
-                    Le texte généré est du pseudo latin et peut donner l'impression d'être du vrai texte.
-
-                    Faux-Texte est une réalisation du studio de création de sites internet indépendant Prélude Prod.
-
-                    Si vous aimez la photographie d'art et l'esprit zen, jetez un œil sur le site de ce photographe à
-                    Palaiseau, en Essonne (France).
+                    Pour les entreprises, la Valorisation des Acquis de l’Expérience (VAE) permet de valoriser son personnel en lui reconnaissant des savoirs et compétences acquis dans leurs métiers.<br>
+                    La VAE est un outil de professionnalisation, un levier d’évolution et une marque de reconnaissance individuelle.
                 </p>
                 <a href="<?php echo get_permalink($articleVaeEntreprise->ID) ?>" class="btn center">+ Découvrez le
                     programme</a>
@@ -429,11 +419,8 @@ global $wpdb;
                     <?php
                     // Lancement Curl pour récupérer le bureau
                     $url = "https://appli.entheor.com/web/api/offices";
-
                     $auth = "devEntheo:3E5_yu*C";
-
                     $curl = curl_init();
-
                     curl_setopt_array($curl, array(
                         CURLOPT_URL => $url,
                         CURLOPT_RETURNTRANSFER => true,
@@ -448,13 +435,9 @@ global $wpdb;
                         CURLOPT_SSL_VERIFYHOST => false,
                         CURLOPT_SSL_VERIFYPEER => false
                     ));
-
-
                     $response = curl_exec($curl);
                     $err = curl_error($curl);
-
                     curl_close($curl);
-
                     if ($err) {
                         echo "cURL Error #:" . $err;
                     } else {
@@ -463,7 +446,6 @@ global $wpdb;
                     foreach ($result as $office) {
                         $regions[$office->ville->region][] = $office;
                     }
-
                     ?>
                     <?php foreach ($regions as $key => $offices) : ?>
                         <div class="training_around_you_by_city_block">

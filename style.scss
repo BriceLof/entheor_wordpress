@@ -580,7 +580,8 @@ Version: 0.0.1
   }
 }
 
-#block_confirmation_mer{
+.block_confirmation_mer{
+  position: relative;
   width:50%;
   margin: auto;
   .message_mail_sent{
@@ -590,6 +591,14 @@ Version: 0.0.1
     padding:50px 0px;
     margin-top: 25px;
     font-weight: bold;
+  }
+  .closed_popup{
+    position: absolute;
+    right: 0;
+    font-size: 25px;
+    padding: 25px;
+    cursor: pointer;
+    top: -14px;
   }
 }
 

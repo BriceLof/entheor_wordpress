@@ -39,19 +39,19 @@ $(document).ready(function () {
         }
     })
 
-    // $(".btn_to_access_search_bureau_a_distance").click(function(){
-    //     jQuery.post(
-    //         ajaxurl,
-    //         {
-    //             'action': 'search_center_elearning',
-    //         },
-    //         function(response){
-    //             result = JSON.parse(response)
-    //             url = url_start+'/vae-'+result[0]+'/'+result[1]+'/'
-    //             window.location.href = url
-    //         }
-    //     );
-    // })
+    $(".btn_to_access_search_bureau_a_distance").click(function(){
+        jQuery.post(
+            ajaxurl,
+            {
+                'action': 'search_center_elearning',
+            },
+            function(response){
+                result = JSON.parse(response)
+                url = url_start+'/vae-'+result[0]+'/'+result[1]+'/'
+                window.location.href = url
+            }
+        );
+    })
     // FIN Formulaire rechercche de bureau HOME
 
     // Formulaire en étapes Home
@@ -167,10 +167,10 @@ $(document).ready(function () {
 
     // Message validation mise en relation
     if (window.location.hash != '' && window.location.hash == "#confirmation_mer") {
-        $("#block_confirmation_mer").show()
-        setTimeout(function () {
-            $("#block_confirmation_mer").hide()
-        }, 4000);
+        $(".block_confirmation_mer").show()
+        $(".closed_popup").click(function(){
+            $(".block_confirmation_mer").hide()
+        })
     }
     // FIN Message validation mise en relation
 

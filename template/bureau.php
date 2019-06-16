@@ -98,10 +98,6 @@ if ($err) {
             </div>
         </div>
 
-        <section id="block_confirmation_mer" style="display: none">
-            <p class="message_mail_sent">Votre diagnostic a bien été enregistré.<br>Un consultant vous contacte dans la journée.</p>
-        </section>
-
         <section id="content" class="container">
             <div class="row">
                 <div id="block_content_centre" class="col-md-9">
@@ -172,7 +168,7 @@ if ($err) {
                                             $datePublishRaw = $beneficiaire->avis[0]->date;
                                             $datePublishFinal = new DateTime($datePublishRaw);
                                             ?>
-                                            <p class="date">Avis publié le <?php echo $datePublishFinal->format('d/m/Y') ?></p>
+                                            <p class="date">Avis VAE publié le <?php echo $datePublishFinal->format('d/m/Y') ?></p>
                                             <div class="note stars">
                                                 <?php for ($j = 0; $j < 5; $j++) : ?>
                                                     <?php if ($j < $beneficiaire->avis[0]->noteGlobale) : ?>

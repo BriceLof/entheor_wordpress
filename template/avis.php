@@ -61,8 +61,11 @@ echo get_post()->post_content;
                         $datePublishRaw = $avis->date;
                         $datePublishFinal = new DateTime($datePublishRaw);
                         ?>
-                        <p class="date"><i>Avis publié le <?php echo $datePublishFinal->format('d/m/Y') ?></i></p>
-
+                        <p class="date">
+                            <i>Avis VAE publié le <?php echo $datePublishFinal->format('d/m/Y') ?><br>
+                                Diplôme visé : <?php echo $avis->beneficiaire->diplomeVise ?>
+                            </i>
+                        </p>
                         <!--<picture>
                             <img class="block_profile_img" src="" alt="Photo de la personne témoignant"/>
                         </picture>-->

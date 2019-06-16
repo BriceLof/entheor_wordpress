@@ -96,7 +96,7 @@ function submit_form_add_beneficiaire(){
             "heureRappel" => (isset($_POST['time_preference'])) ? $_POST['time_preference'] : 'Indifférent',
             "nomConso" => $_POST['name'],
             "prenomConso"=> $_POST['surname'],
-            "origineMer" => 'Entheor.com / Naturel',
+            "origineMer" => 'Entheor.com_naturel',
             "poste" => (isset($_POST['metiers'])) ? $_POST['metiers'] : '',
             "experience" => (isset($_POST['experience'])) ? $_POST['experience'] : '',
             "motivation" => (isset($_POST['reason'])) ? $_POST['reason'] : '',
@@ -199,13 +199,8 @@ function submit_form_add_beneficiaire(){
 //            echo $response;
 //        }
 
-        if(isset($_SESSION['url_before_mer']) && $_SESSION['url_before_mer'] != '' && !is_null($_SESSION['url_before_mer']))
-        {
-            wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#confirmation_mer');
-        }
-        else {
-            wp_redirect(home_url() . '/demande-contact-enregistre/');
-        }
+        wp_redirect(home_url() . '#confirmation_mer');
+
     }
 }
 add_action('admin_post_nopriv_submitFormAddBeneficiaire', 'submit_form_add_beneficiaire');
@@ -411,6 +406,7 @@ function submit_form_contact(){
             'replyTo' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'to' => array(
                 array('email' => 'brice.lof@gmail.com', 'name' => 'Brice Lof'),
+                array('email' => 'f.azoulay@entheor.com', 'name' => 'Franck Azoulay'),
                 array('email' => 'contact@entheor.com', 'name' => 'Contact'),
             ),
             'bcc' => array(array("email" => "support.informatique@entheor.com", "name" => "support.informatique@entheor.com")),

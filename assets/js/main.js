@@ -31,11 +31,28 @@ $(document).ready(function () {
         $("#form_search_center_foreigner_home").show()
     })
 
-    $("#formulaire_search_center_home").submit(function () {
-        zipField = $("#formulaire_search_center_home input[name=zip_search_center]").val()
-        if (zipField.length < 5) {
-            $("#erreur_post_form").show()
-            return false
+    $("#formulaire_search_center_home").validate({
+        rules: {
+            "zip_search_center": {
+                required: true,
+                digits: true,
+                remote: {
+                    url: 'https://appli-dev.entheor.com/web/api/cities',
+                    type: 'get',
+                    contentType: "application/json",
+                    data: {
+                        zip: function () {
+                            return $("#zip_search_center").val();
+                        }
+                    },
+                    dataFilter: function (data) {
+                        if (JSON.parse(data).length == 0){
+                            return "false";
+                        }
+                        return "true";
+                    }
+                }
+            }
         }
     })
 
@@ -153,6 +170,10 @@ $(document).ready(function () {
             $(this).attr("data-error", "true");
     });
 
+    $("#email").rules("add", {
+        required: true,
+        email: true
+    })
 
     $("#city_search").rules("add", {
         required: true,

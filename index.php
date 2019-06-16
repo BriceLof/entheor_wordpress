@@ -21,7 +21,7 @@ global $wpdb;
             <div id="text_button_search" class="container text-uppercase">
                 <div class="block_intro_search">
                     <p>Pour chaque projet VAE, un interlocuteur dédié.<br>
-                        Trouvez le vôtre :
+                        Trouvez le vôtre :
                     </p>
                 </div>
                 <p id="block_btn_to_access_search_center">
@@ -70,7 +70,6 @@ global $wpdb;
                         ));
                         $response = curl_exec($curl);
                         $err = curl_error($curl);
-
                         curl_close($curl);
                         if ($err) {
                             echo "cURL Error #:" . $err;
@@ -166,11 +165,8 @@ global $wpdb;
                 <?php
                 // Lancement Curl pour récupérer le bureau
                 $url = "https://appli.entheor.com/web/api/advices?limit=6";
-
                 $auth = "devEntheo:3E5_yu*C";
-
                 $curl = curl_init();
-
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => $url,
                     CURLOPT_RETURNTRANSFER => true,
@@ -185,18 +181,13 @@ global $wpdb;
                     CURLOPT_SSL_VERIFYHOST => false,
                     CURLOPT_SSL_VERIFYPEER => false
                 ));
-
-
                 $response = curl_exec($curl);
                 $err = curl_error($curl);
-
                 curl_close($curl);
-
                 if ($err) {
                     echo "cURL Error #:" . $err;
                 } else {
                     $result = json_decode($response);
-
                 }
                 ?>
                 <div class="owl-carousel">
@@ -428,11 +419,8 @@ global $wpdb;
                     <?php
                     // Lancement Curl pour récupérer le bureau
                     $url = "https://appli.entheor.com/web/api/offices";
-
                     $auth = "devEntheo:3E5_yu*C";
-
                     $curl = curl_init();
-
                     curl_setopt_array($curl, array(
                         CURLOPT_URL => $url,
                         CURLOPT_RETURNTRANSFER => true,
@@ -447,13 +435,9 @@ global $wpdb;
                         CURLOPT_SSL_VERIFYHOST => false,
                         CURLOPT_SSL_VERIFYPEER => false
                     ));
-
-
                     $response = curl_exec($curl);
                     $err = curl_error($curl);
-
                     curl_close($curl);
-
                     if ($err) {
                         echo "cURL Error #:" . $err;
                     } else {
@@ -462,7 +446,6 @@ global $wpdb;
                     foreach ($result as $office) {
                         $regions[$office->ville->region][] = $office;
                     }
-
                     ?>
                     <?php foreach ($regions as $key => $offices) : ?>
                         <div class="training_around_you_by_city_block">

@@ -34,11 +34,11 @@
 </head>
 
 <body>
-    <header>
-        <a href="<?php echo home_url('/') ?>"><img id="logo" src="<?php echo get_template_directory_uri(); ?>/assets/image/logo-entheor.png" alt="Logo Entheor"  /></a>
-        <nav class="text-uppercase menu_theme_entheor"><b><?php echo wp_nav_menu() ?></b></nav>
-        <?php
-        $current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        $_SESSION['url_before_mer'] = $current_url;
-        ?>
-    </header>
+<header>
+    <a href="<?php echo home_url('/') ?>"><img id="logo" src="<?php echo get_template_directory_uri(); ?>/assets/image/logo-entheor.png" alt="Logo Entheor"  /></a>
+    <nav class="text-uppercase menu_theme_entheor"><b><?php echo wp_nav_menu() ?></b></nav>
+    <?php
+    $current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $_SESSION['url_before_mer'] = $current_url;
+    ?>
+</header>

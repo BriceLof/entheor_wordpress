@@ -18,7 +18,6 @@
                     </ul>
                 </nav>
             </section>
-
             <?php wp_footer(); ?>
         </footer>
     </body>

@@ -5,15 +5,12 @@
  * Date: 20/01/2019
  * Time: 23:15
  */
-
-
 add_action('init', 'myStartSession', 1);
 function myStartSession() {
     if(!session_id()) {
         session_start();
     }
 }
-
 add_theme_support( 'post-thumbnails' );
 function add_meta_tags() {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
@@ -23,7 +20,6 @@ function add_meta_tags() {
     }
 }
 add_action('wp_head', 'add_meta_tags');
-
 function add_theme_scripts() {
     echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   ';
@@ -36,7 +32,6 @@ function add_theme_scripts() {
     wp_enqueue_style( 'owl.theme.default', get_template_directory_uri() . '/assets/external_plugin/owl_carousel_2-2.3.4/dist/assets/owl.theme.default.min.css',false,'1.0','all');
 }
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
-
 // js : start
 function add_js(){
     echo '
@@ -58,13 +53,10 @@ function add_js(){
     wp_localize_script('main', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 }
 add_action('wp_footer', 'add_js');
-
 // Ajax pour récupérer les domaines métiers en bdd
 function domaine_metier_vae_ajax() {
     global $wpdb;
-
     $id = (isset($_POST["id_domaine_vae"])) ? $_POST["id_domaine_vae"] : '';
-
     $metier =
         $wpdb->get_results(
             $wpdb->prepare(
@@ -72,18 +64,22 @@ function domaine_metier_vae_ajax() {
                 $id
             )
         );
-
     echo json_encode($metier);
     exit;
 }
 add_action('wp_ajax_nopriv_domaine_metier_vae_ajax', 'domaine_metier_vae_ajax');
 add_action('wp_ajax_domaine_metier_vae_ajax', 'domaine_metier_vae_ajax');
-
-
 // Ajout d'un bénéficiaire dans Entheo
 function submit_form_add_beneficiaire(){
     if (isset($_POST['formulaire_add_beneficiaire']))
     {
+        $origine = "Entheor.com_naturel";
+//        $origine = "Entheor.com_Rappel Expatrié_naturel";
+//        if(isset($_SESSION['url_before_mer']) && $_SESSION['url_before_mer'] != '' && !is_null($_SESSION['url_before_mer']))
+//        {
+//            var_dump($_SESSION['url_before_mer']);exit;
+//        }
+
         $data = array(
             "bureauId" => (isset($_POST['bureau'])) ? $_POST['bureau'] : null,
             "codePostal" => (isset($_POST['zip_conso'])) ? $_POST['zip_conso'] : '',
@@ -96,19 +92,16 @@ function submit_form_add_beneficiaire(){
             "heureRappel" => (isset($_POST['time_preference'])) ? $_POST['time_preference'] : 'Indifférent',
             "nomConso" => $_POST['name'],
             "prenomConso"=> $_POST['surname'],
-            "origineMer" => 'Entheor.com_naturel',
+            "origineMer" => $origine,
             "poste" => (isset($_POST['metiers'])) ? $_POST['metiers'] : '',
             "experience" => (isset($_POST['experience'])) ? $_POST['experience'] : '',
             "motivation" => (isset($_POST['reason'])) ? $_POST['reason'] : '',
             "pays" => (isset($_POST['country'])) ? $_POST['country'] : 'FR',
             "city" => (isset($_POST['city'])) ? $_POST['city'] : '',
         );
-
         // Lancement Curl pour insérer un bénéficiaire
         $url = "https://appli.entheor.com/web/api/beneficiaries";
-
         $auth = "devEntheo:3E5_yu*C";
-
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -124,25 +117,22 @@ function submit_form_add_beneficiaire(){
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false
         ));
-
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
-
 //        if ($err) {
 //            echo "cURL Error #:" . $err;
 //        } else {
 //            $result = json_decode($response);
 //        }
-
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
+            <p>Alerte 8</p>
             <p>Voici les informations du contact : </p>
             <ul>
                 <li>Date et heure de la mise en relation : ".date('d/m/Y à h:i')."</li>
+                <li>Origine : ".$origine."</li>
                 <li>Civilité, nom et prénom : ".ucfirst($data['civiliteConso'])." ".ucfirst($data['nomConso'])." ".ucfirst($data['prenomConso'])."</li>
                 <li>Statut : ".ucfirst($data['statut'])."</li>
                 <li>Téléphone : ".$data['telConso']."</li>
@@ -152,7 +142,6 @@ function submit_form_add_beneficiaire(){
                 <li>Secteur d'activité : ".$data['domaineVae']."</li>
             </ul>
         ";
-
         $data_to_send_mail = array(
             'sender' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'replyTo' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
@@ -169,9 +158,7 @@ function submit_form_add_beneficiaire(){
             'htmlContent' => $message,
             'tags' => array('mer_entheor.com')
         );
-
         $header = array('Accept: application/json', 'Content-Type: application/json', 'api-key: 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');
-
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_HTTPHEADER => $header,
@@ -186,30 +173,22 @@ function submit_form_add_beneficiaire(){
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false
         ));
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
-
         // A décommenter pour voir le retour de l'api en cas d'erreur
 //        if ($err) {
 //            echo "cURL Error #:" . $err;
 //        } else {
 //            echo $response;
 //        }
-
         wp_redirect(home_url() . '#confirmation_mer');
-
     }
 }
 add_action('admin_post_nopriv_submitFormAddBeneficiaire', 'submit_form_add_beneficiaire');
 add_action('admin_post_submitFormAddBeneficiaire', 'submit_form_add_beneficiaire');
-
-
 // Mail pour Devenir accompagnateur VAE
 function submit_form_devenir_accompagnateur(){
-
     if (isset($_POST['formulaire_devenir_accompagnateur']))
     {
         $data = array(
@@ -221,7 +200,6 @@ function submit_form_devenir_accompagnateur(){
             "prenomConso"=> $_POST['surname'],
             "objectif" => $_POST['objectif']
         );
-
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
@@ -234,7 +212,6 @@ function submit_form_devenir_accompagnateur(){
                 <li>Contexte/Objectif : ".$data['objectif']."</li>
             </ul>
         ";
-
         $data_to_send_mail = array(
             'sender' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'replyTo' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
@@ -251,11 +228,8 @@ function submit_form_devenir_accompagnateur(){
             'htmlContent' => $message,
             'tags' => array('formation_accompagnateur_entheor.com')
         );
-
         $header = array('Accept: application/json', 'Content-Type: application/json', 'api-key: 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');
-
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
             CURLOPT_HTTPHEADER => $header,
             CURLOPT_URL => "https://api.sendinblue.com/v3/smtp/email",
@@ -269,29 +243,22 @@ function submit_form_devenir_accompagnateur(){
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false
         ));
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
-
         // A décommenter pour voir le retour de l'api en cas d'erreur
 //        if ($err) {
 //            echo "cURL Error #:" . $err;
 //        } else {
 //            echo $response;
 //        }
-
         wp_redirect( home_url().'/demande-contact-enregistre/' );
-
     }
 }
 add_action('admin_post_nopriv_submitFormDevenirAccompagnateur', 'submit_form_devenir_accompagnateur');
 add_action('admin_post_submitFormDevenirAccompagnateur', 'submit_form_devenir_accompagnateur');
-
 // Mail pourVAE entreprise
 function submit_form_vae_entreprise(){
-
     if (isset($_POST['formulaire_vae_entreprise']))
     {
         $data = array(
@@ -305,7 +272,6 @@ function submit_form_vae_entreprise(){
             "entreprise"=> $_POST['entreprise'],
             "fonction" => $_POST['fonction']
         );
-
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
@@ -320,7 +286,6 @@ function submit_form_vae_entreprise(){
                 <li>Contexte/Objectif : ".$data['objectif']."</li>
             </ul>
         ";
-
         $data_to_send_mail = array(
             'sender' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'replyTo' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
@@ -337,11 +302,8 @@ function submit_form_vae_entreprise(){
             'htmlContent' => $message,
             'tags' => array('vae_entreprise_entheor.com')
         );
-
         $header = array('Accept: application/json', 'Content-Type: application/json', 'api-key: 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');
-
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
             CURLOPT_HTTPHEADER => $header,
             CURLOPT_URL => "https://api.sendinblue.com/v3/smtp/email",
@@ -355,27 +317,20 @@ function submit_form_vae_entreprise(){
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false
         ));
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
-
         // A décommenter pour voir le retour de l'api en cas d'erreur
 //        if ($err) {
 //            echo "cURL Error #:" . $err;
 //        } else {
 //            echo $response;
 //        }
-
         wp_redirect( home_url().'/demande-contact-enregistre/' );
-
     }
 }
 add_action('admin_post_nopriv_submitFormVaeEntreprise', 'submit_form_vae_entreprise');
 add_action('admin_post_submitFormVaeEntreprise', 'submit_form_vae_entreprise');
-
-
 // Page contact
 function submit_form_contact(){
     if (isset($_POST['formulaire_contact'])) {
@@ -387,7 +342,6 @@ function submit_form_contact(){
             "email" => (isset($_POST['email'])) ? $_POST['email'] : '',
             "message" => (isset($_POST['message'])) ? $_POST['message'] : '',
         );
-
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
@@ -400,7 +354,6 @@ function submit_form_contact(){
                 <li>Message : " . $data['message'] . "</li>
             </ul>
         ";
-
         $data_to_send_mail = array(
             'sender' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'replyTo' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
@@ -414,11 +367,8 @@ function submit_form_contact(){
             'htmlContent' => $message,
             'tags' => array('demande_contact_entheor.com')
         );
-
         $header = array('Accept: application/json', 'Content-Type: application/json', 'api-key: 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');
-
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
             CURLOPT_HTTPHEADER => $header,
             CURLOPT_URL => "https://api.sendinblue.com/v3/smtp/email",
@@ -432,19 +382,15 @@ function submit_form_contact(){
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false
         ));
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
-
         // A décommenter pour voir le retour de l'api en cas d'erreur
 //        if ($err) {
 //            echo "cURL Error #:" . $err;
 //        } else {
 //            echo $response;
 //        }
-
         if(isset($_SESSION['url_before_mer']) && $_SESSION['url_before_mer'] != '' && !is_null($_SESSION['url_before_mer']))
         {
             wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#confirmation_mer');
@@ -456,13 +402,9 @@ function submit_form_contact(){
 }
 add_action('admin_post_nopriv_submitFormContact', 'submit_form_contact');
 add_action('admin_post_submitFormContact', 'submit_form_contact');
-
-
 //------------------------ AJOUT URL CUSTOM ----------------------------------------------------------
-
 // Ajouter url custom : https://codex.wordpress.org/Rewrite_API/add_rewrite_rule , j'ai suivi ce tuto
 // Ne pas oublier de sauvegarder les Permaliens pour Wordpress soit au courant de l'url (Réglage->Permaliens->Enregistrer)
-
 function custom_rewrite_tag() {
     add_rewrite_tag('%ville%', '([^&]+)');
     add_rewrite_tag('%id_bureau%', '([^&]+)');
@@ -470,28 +412,20 @@ function custom_rewrite_tag() {
     // add_rewrite_tag('%testparam%', '([^&]+)');
 }
 add_action('init', 'custom_rewrite_tag', 10, 0);
-
 function custom_rewrite_rule() {
     add_rewrite_rule('^vae-([^/]*)/([^/]*)/?','index.php?page_id=138&ville=$matches[1]&id_bureau=$matches[2]','top');
-
     // Ci dessous : ajouter une seconde url avec le 2nd parametre
     add_rewrite_rule('^temoignages-vae/?','index.php?page_id=177','top');
 }
 add_action('init', 'custom_rewrite_rule', 10, 0);
-
 // Recherche de bureau
 function search_center(){
     if (isset($_POST['search_center']) ) {
-
         $_SESSION['zip'] = $_POST['zip_search_center'];
-
         // Lancement Curl pour récupérer la ville
         $url = "https://appli.entheor.com/web/api/offices?zip=" . $_POST['zip_search_center'] . "&limit=1";
-
         $auth = "devEntheo:3E5_yu*C";
-
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
@@ -506,13 +440,9 @@ function search_center(){
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false
         ));
-
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
-
         if ($err) {
             echo "cURL Error #:" . $err;
         } else {
@@ -522,7 +452,6 @@ function search_center(){
                 if(count($result) > 0){
                     $idBureau = $result[0]->id;
                     $slugVille = $result[0]->ville->slugVille;
-
                     wp_redirect( home_url().'/vae-'.$slugVille.'/'.$idBureau.'/' );
                 }else{
                     echo "Pas de résultat";
@@ -538,19 +467,13 @@ function search_center(){
 }
 add_action('admin_post_nopriv_searchCenter', 'search_center');
 add_action('admin_post_searchCenter', 'search_center');
-
-
 function search_center_elearning() {
     if (isset($_POST['search_center_foreigner']) ) {
         $_SESSION['country'] = $_POST['country'];
         $_SESSION['city'] = $_POST['city'];
-
         $url = "https://appli.entheor.com/web/api/offices?elearning=true";
-
         $auth = "devEntheo:3E5_yu*C";
-
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
@@ -565,18 +488,13 @@ function search_center_elearning() {
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false
         ));
-
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
-
         if ($err) {
             echo "cURL Error #:" . $err;
         } else {
             $result = json_decode($response);
-
             // bureau à distance
             $slugVille = $result->ville->slugVille;
             $idBureau = $result->id;
@@ -586,8 +504,6 @@ function search_center_elearning() {
 }
 add_action('admin_post_nopriv_searchCenterForeigner', 'search_center_elearning');
 add_action('admin_post_searchCenterForeigner', 'search_center_elearning');
-
-
 // Update meta title et description
 function title_meta_update($titleYoast)
 {
@@ -611,7 +527,6 @@ function title_meta_update($titleYoast)
     }
 }
 add_filter('wpseo_title', 'title_meta_update');
-
 function description_meta_update($descYoast)
 {
     if(is_page_template('template/bureau.php')){

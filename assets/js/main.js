@@ -106,9 +106,9 @@ $(document).ready(function () {
     $(".menu-item").mouseover(function () {
         $(this).find(".sub-menu").show();
     })
-        .mouseout(function () {
-            $(this).find(".sub-menu").hide();
-        });
+    .mouseout(function () {
+        $(this).find(".sub-menu").hide();
+    });
     // FIN Menu : afficher icone contact
 
     // Avis : voir + ou - l'extrait

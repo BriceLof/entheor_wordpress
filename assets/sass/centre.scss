@@ -26,6 +26,10 @@
       font-size: 20px;
       margin-right: 5px;
       margin-top: 3px;
+      a{
+        color: #f4cd1f;
+        text-decoration: underline;
+      }
     }
     #moyenne_note_stars{
 
@@ -77,8 +81,8 @@
       }
       .block_img_then{
         img{
-          height:120px;
-          margin-bottom: 10px;
+          /*height:120px;*/
+          margin-bottom: 30px;
         }
       }
 

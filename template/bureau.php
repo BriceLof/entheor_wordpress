@@ -60,16 +60,18 @@ if ($err) {
                 yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
             }
             ?>
-            <h1>Accompagnement VAE à <?php echo $result->ville->nom ?></h1>
-            <h2 class="text-uppercase"><?php echo $result->nombureau ?></h2>
+            <h1>Accompagnement VAE à <?php echo ucfirst(strtolower($result->ville->nom)); ?></h1>
+            <h2>avec le cabinet ENTHEOR</h2>
             <div id="note">
                 <?php
                 $notesTotal = 0;
                 $nombreBeneficiaire = count($result->beneficiaires);
+                $nombreAvis = 0;
                 foreach($result->beneficiaires as $beneficiaire){
                     if(count($beneficiaire->avis) > 0){
                         $noteBeneficiaire = $beneficiaire->avis[0]->noteGlobale;
                         $notesTotal = $notesTotal + $noteBeneficiaire;
+                        $nombreAvis++;
                     }else{
                         $nombreBeneficiaire = $nombreBeneficiaire - 1;
                     }
@@ -80,7 +82,7 @@ if ($err) {
                     $noteToDisplay = $notesTotal / $nombreBeneficiaire;
                 }
                 ?>
-                <p id="moyenne_note"><?php echo ($noteToDisplay > 0) ? $noteToDisplay : '' ?></p>
+
                 <div id="moyenne_note_stars" class="stars">
                     <?php for ($i = 0; $i < 5 ; $i++) : ?>
                         <?php if ($i < ((int)$noteToDisplay/1)) : ?>
@@ -92,7 +94,7 @@ if ($err) {
                         <?php endif; ?>
                     <?php endfor; ?>
                 </div>
-
+                <p id="moyenne_note"><?php echo ($noteToDisplay > 0) ? round($noteToDisplay, 1).'/5 sur '.$nombreAvis.' <a href="#tab_review">avis</a>' : '' ?></p>
             </div>
         </div>
 
@@ -114,28 +116,37 @@ if ($err) {
                     </div>
                     <div class="row">
                         <div id="content_block" class='col-md-12'>
-                            <div id="tab_description" class="content">
+                            <div id="tab_description" class="content tab">
                                 <p><?php echo $result->intro ?></p>
                                 <p><?php echo $result->content ?></p>
                                 <div class="row">
                                     <?php if(!is_null($result->firstImage) && $result->firstImage != '') : ?>
-                                        <img class="col-md-8 col-sm-12 img_focus" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->firstImage ?>" />
+                                        <div class="col-md-8 col-sm-12 img_focus">
+                                            <img class="" width="100%" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->firstImage ?>" />
+                                        </div>
+
                                     <?php endif; ?>
 
                                     <div class="col-md-4 col-sm-12 block_img_then">
                                         <div class="row">
                                             <?php if(!is_null($result->secondImage) && $result->secondImage != '') : ?>
-                                                <img class="col-sm-12" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->secondImage ?>" />
+                                                <div class="col-md-12">
+                                                    <img class="" width="100%" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->secondImage ?>" />
+                                                </div>
+
                                             <?php endif; ?>
                                             <?php if(!is_null($result->thirdImage) && $result->thirdImage != '') : ?>
-                                                <img class="col-sm-12" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->thirdImage ?>" />
+                                                <div class="col-md-12">
+                                                    <img class="" width="100%" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->thirdImage ?>" />
+                                                </div>
+
                                             <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="tab_trainer">
+                            <div id="tab_trainer" class="tab">
                                 <p id="title">Nos consultants vous reçoivent pour votre projet VAE</p>
                                 <?php foreach($result->consultants as $consultant) : ?>
                                     <article style="overflow: hidden;">
@@ -152,7 +163,7 @@ if ($err) {
                                 <?php endforeach; ?>
                             </div>
 
-                            <div id="tab_review">
+                            <div id="tab_review" class="tab">
                                 <?php foreach($result->beneficiaires as $beneficiaire) : ?>
                                     <?php //var_dump($beneficiaire) ?>
                                     <?php if(count($beneficiaire->avis) > 0) : ?>
@@ -218,12 +229,12 @@ if ($err) {
                             <ul>
                                 <li class=""><?php echo $result->adresse."<br>".ucfirst(strtolower($result->ville->cp." ".$result->ville->dpt)); ?></li>
                             </ul>
-
-                            <p class="text-uppercase title">accès</p>
-                            <ul>
-                                <li class=""><?php echo $result->acces ?></li>
-                            </ul>
-
+                            <?php if($result->acces != '' && !is_null($result->acces)) : ?>
+                                <p class="text-uppercase title">accès</p>
+                                <ul>
+                                    <li class=""><?php echo $result->acces ?></li>
+                                </ul>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </aside>

@@ -102,6 +102,10 @@ body header nav {
   margin-right: 5px;
   margin-top: 3px;
 }
+#block_header_photo #note #moyenne_note a {
+  color: #f4cd1f;
+  text-decoration: underline;
+}
 #block_header_photo #overlay {
   background-color: #00000075;
   width: 100%;
@@ -140,8 +144,8 @@ body header nav {
   height: 250px;
 }
 #content #block_content_centre #content_block .block_img_then img {
-  height: 120px;
-  margin-bottom: 10px;
+  /*height:120px;*/
+  margin-bottom: 30px;
 }
 #content #block_content_centre #content_block #tab_trainer #title {
   margin-bottom: 20px;

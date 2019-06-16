@@ -4,7 +4,7 @@
                     <nav class="row">
                         <ul>
                            <li><a href="<?php echo get_permalink(get_post(266)->ID) ?>">Mention légales</a></li>
-                           <li><a href="">Référence</a></li>
+                           <!--<li><a href="">Référence</a></li>-->
                            <li><a href="<?php echo get_permalink(get_post(255)->ID) ?>">Vie privée</a></li>
                            <li><a href="<?php echo get_permalink(get_post(257)->ID) ?>">Conditions générales de ventes</a></li>
                            <li><a href="<?php echo get_permalink(get_post(249)->ID) ?>">Enthéor recrute</a></li>

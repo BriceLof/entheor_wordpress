@@ -60,7 +60,13 @@ if ($err) {
                 yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
             }
             ?>
-            <h1>Accompagnement VAE à <?php echo ucfirst(strtolower($result->ville->nom)); ?></h1>
+            <?php if ($result->id == 290) : ?>
+                <h1>Accompagnement VAE
+                    à distance</h1>
+            <?php else : ?>
+                <h1>Accompagnement VAE
+                    à <?php echo preg_replace('/eme/', 'ème', ucfirst(strtolower($result->ville->nom))) ?></h1>
+            <?php endif ?>
             <h2>avec le cabinet ENTHEOR</h2>
             <div id="note">
                 <?php

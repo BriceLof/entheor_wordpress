@@ -32,14 +32,16 @@
             })});
     </script>
     <?php if($_SERVER['HTTP_HOST'] != 'localhost') : ?>
-        <script src="https://www.google.com/recaptcha/api.js?render=6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB"></script>
-        <script>
-            grecaptcha.ready(function() {
-                grecaptcha.execute('6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB', {action: 'homepage'}).then(function(token) {
-                    $("#token_captcha_hidden").val(token)
+        <?php if($_SERVER['REQUEST_URI'] == '/contact/') : ?>
+            <script src="https://www.google.com/recaptcha/api.js?render=6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB"></script>
+            <script>
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB', {action: 'homepage'}).then(function(token) {
+                        $("#token_captcha_hidden").val(token)
+                    });
                 });
-            });
-        </script>
+            </script>
+        <?php endif; ?>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142242345-1"></script>
         <script>

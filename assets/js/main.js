@@ -102,7 +102,8 @@ $(document).ready(function () {
 
     // Menu : afficher icone contact
     //url_start = document.location.origin+"/entheor_wordpress/"
-    url_start = document.location.origin + "/entheor_wordpress_production/wordpress/"
+    //url_start = document.location.origin + "/entheor_wordpress_production/wordpress/"
+    url_start = document.location.origin
     $("header nav li, #responsive-menu-container ul li").each(function () {
         if ($(this).find('a').text() == 'Contact') {
             $(this).find('a').text('')

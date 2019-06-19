@@ -27,22 +27,34 @@
                     "message": "Notre site utilise des cookies afin que nous puissions vous fournir la meilleure expérience utilisateur. En navigant sur notre site, vous acceptez l'usage que nous en faisons. ",
                     "dismiss": "OK",
                     "link": "En savoir plus",
-                    "href": "https://entheor.com/entheor_wordpress_production/wordpress/vie-privee/"
+                    "href": "https://entheor.com/vie-privee/"
                 }
             })});
     </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB"></script>
-    <script>
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB', {action: 'homepage'}).then(function(token) {
-                $("#token_captcha_hidden").val(token)
+    <?php if($_SERVER['HTTP_HOST'] != 'localhost') : ?>
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB"></script>
+        <script>
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB', {action: 'homepage'}).then(function(token) {
+                    $("#token_captcha_hidden").val(token)
+                });
             });
-        });
-    </script>
+        </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142242345-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-142242345-1');
+        </script>
+    <?php endif; ?>
 </head>
 
 
 <body>
+
 <header>
     <a href="<?php echo home_url('/') ?>"><img id="logo" src="<?php echo get_template_directory_uri(); ?>/assets/image/logo-entheor.png" alt="Logo Entheor"  /></a>
     <nav class="text-uppercase menu_theme_entheor"><b><?php echo wp_nav_menu() ?></b></nav>

@@ -573,26 +573,17 @@ body header nav {
   font-weight: bold;
 }
 
-.block_confirmation_mer {
-  position: relative;
+#block_confirmation_mer {
   width: 50%;
   margin: auto;
 }
-.block_confirmation_mer .message_mail_sent {
+#block_confirmation_mer .message_mail_sent {
   text-align: center;
   font-size: 20px;
   border: 2px solid #97bd12;
   padding: 50px 0px;
   margin-top: 25px;
   font-weight: bold;
-}
-.block_confirmation_mer .closed_popup {
-  position: absolute;
-  right: 0;
-  font-size: 25px;
-  padding: 25px;
-  cursor: pointer;
-  top: -14px;
 }
 
 .btn_back_home {

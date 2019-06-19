@@ -31,7 +31,16 @@
                 }
             })});
     </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6Lf6tKkUAAAAAGvQZS6eQrOJoRvDqSxDYlsb0XxB', {action: 'homepage'}).then(function(token) {
+                $("#token_captcha_hidden").val(token)
+            });
+        });
+    </script>
 </head>
+
 
 <body>
 <header>

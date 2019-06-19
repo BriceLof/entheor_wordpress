@@ -213,6 +213,7 @@ if ($err) {
                         <!-- Form : ajout beneficiaire -->
                         <div id="form_mer">
                             <form id="form_mise_en_relation" action='<?php echo admin_url( 'admin-post.php' ); ?>' method="post">
+                                <div class="g-recaptcha" data-sitekey="6LfoaakUAAAAAKjkFbpDSQgkRwk2KSLLdQ9AhNfj"></div>
                                 <input type="hidden" name="bureau" value="<?php echo $result->id ?>"/>
                                 <?php
                                 set_query_var( 'idOffice', $result->id );

@@ -114,7 +114,6 @@ header nav .sub-menu {
   position: absolute;
   background-color: white;
   text-transform: capitalize;
-  width: max-content;
 }
 header nav .sub-menu li {
   display: block;

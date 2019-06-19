@@ -334,6 +334,9 @@ add_action('admin_post_submitFormVaeEntreprise', 'submit_form_vae_entreprise');
 // Page contact
 function submit_form_contact(){
     if (isset($_POST['formulaire_contact'])) {
+        // Captcha Google
+        $captchaVerify = captchaGoogleVerify($_POST['token_captcha']);
+
         $data = array(
             "objet" => (isset($_POST['objet'])) ? $_POST['objet'] : '',
             "nom" => (isset($_POST['nom'])) ? $_POST['nom'] : '',
@@ -549,3 +552,36 @@ function description_meta_update($descYoast)
     }
 }
 add_filter('wpseo_metadesc', 'description_meta_update');
+
+
+function captchaGoogleVerify($token){
+
+    if(empty($token)){
+        wp_redirect(home_url() . '/contact/');
+    }
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://www.google.com/recaptcha/api/siteverify",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => "secret=6Lf6tKkUAAAAADpYxmc1jBcuQo-eZjYQ5jGpfEnB&response=".$token,
+        CURLOPT_SSL_VERIFYHOST => false,
+        CURLOPT_SSL_VERIFYPEER => false
+    ));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+
+    $result = json_decode($response);
+    $success = $result->success;
+
+    // back page contact if something wrong with captcha
+    if($success !== true){
+        wp_redirect(home_url() . '/contact/');
+    }
+
+    return $success;
+}
+
+

@@ -45,7 +45,7 @@ body header nav {
   font-size: x-large;
   width: 50px;
   display: inline-block;
-  color: #e4e8ea;
+  color: gray;
   margin-right: -10px;
   margin-left: -10px;
 }

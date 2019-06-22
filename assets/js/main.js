@@ -55,19 +55,19 @@ $(document).ready(function () {
         }
     })
 
-    // $(".btn_to_access_search_bureau_a_distance").click(function(){
-    //     jQuery.post(
-    //         ajaxurl,
-    //         {
-    //             'action': 'search_center_elearning',
-    //         },
-    //         function(response){
-    //             result = JSON.parse(response)
-    //             url = url_start+'/vae-'+result[0]+'/'+result[1]+'/'
-    //             window.location.href = url
-    //         }
-    //     );
-    // })
+     $(".btn_to_access_search_bureau_a_distance").click(function(){
+        jQuery.post(
+            ajaxurl,
+            {
+                'action': 'search_center_elearning_around_footer_section_ajax',
+            },
+            function(response){
+                result = JSON.parse(response)
+                url = url_start+'/vae-'+result['ville'].slugVille+'/'+result['id']+'/'
+                window.location.href = url
+            }
+        );
+    })
     // FIN Formulaire rechercche de bureau HOME
 
     // Formulaire en étapes Home

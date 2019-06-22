@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 /**
  * Template Name: Bureau
  */
@@ -211,7 +212,7 @@ if ($err) {
                     <div class="row">
                         <p class="col-md-12" id="etre_rappele">Être rappelé</p>
                         <!-- Form : ajout beneficiaire -->
-                        <div id="form_mer">
+                        <div id="form_mer" class="col-md-12">
                             <form id="form_mise_en_relation" action='<?php echo admin_url( 'admin-post.php' ); ?>' method="post">
                                 <div class="g-recaptcha" data-sitekey="6LfoaakUAAAAAKjkFbpDSQgkRwk2KSLLdQ9AhNfj"></div>
                                 <input type="hidden" name="bureau" value="<?php echo $result->id ?>"/>

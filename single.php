@@ -31,7 +31,7 @@ $category = get_the_category($post->ID);
                     <div class="row">
                         <p class="col-md-12" id="etre_rappele">Être rappelé</p>
                         <!-- Form : ajout beneficiaire (exception pour les landings 'Devenir accompagnateur VAE' et 'Entreprise')-->
-                        <div id="form_mer">
+                        <div id="form_mer" class="col-md-12">
                             <?php if($post->ID != 160 && $post->ID != 224) : ?>
                                 <form id="form_mise_en_relation" action='<?php echo admin_url( 'admin-post.php' ); ?>' method="post">
                                     <?php get_template_part( 'template/form_mer'); ?>

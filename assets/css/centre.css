@@ -199,6 +199,7 @@ body header nav {
 }
 #content aside #form_mer #form_mise_en_relation {
   margin-top: 14px;
+  padding: 0 14px;
   font-style: italic;
 }
 #content aside #form_mer #form_mise_en_relation input, #content aside #form_mer #form_mise_en_relation select, #content aside #form_mer #form_mise_en_relation textarea {

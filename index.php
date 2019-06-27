@@ -36,7 +36,7 @@ global $wpdb;
                     <form id="formulaire_search_center_home" action="<?php echo admin_url('admin-post.php'); ?>"
                           method="post">
                         <input type='hidden' name='action' value='searchCenter'/>
-                        <input type="number" name="zip_search_center" id="zip_search_center"
+                        <input type="text" name="zip_search_center" id="zip_search_center"
                                placeholder="Code Postal (5 chiffres)" class="col-md-3" required="required">
                         <input type="submit" name="search_center" value="Rechercher" id="zip_search_center_submit"
                                class="btn">

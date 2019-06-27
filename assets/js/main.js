@@ -56,21 +56,6 @@ $(document).ready(function () {
         }
     })
 
-    // $(".btn_to_access_search_bureau_a_distance").click(function(){
-    //     jQuery.post(
-    //         ajaxurl,
-    //         {
-    //             'action': 'search_center_elearning',
-    //         },
-    //         function(response){
-    //             result = JSON.parse(response)
-    //             url = url_start+'/vae-'+result[0]+'/'+result[1]+'/'
-    //             window.location.href = url
-    //         }
-    //     );
-    // })
-    // FIN Formulaire rechercche de bureau HOME
-
     // Formulaire en étapes Home
     $("#btn_launch_form").click(function () {
         $("#form_vae_step").show();
@@ -201,7 +186,7 @@ function autocompleteCity(el, country) {
     $(el).autocomplete({
         source: function (requete, reponse) {
             $.ajax({
-                url: 'https://appli.entheor.com/web/api/places', // le nom du fichier indiqué dans le formulaire
+                url: 'https://appli.entheor.com/web/api/places',
                 cache: true,
                 type: 'GET',
                 contentType: "application/json",
@@ -230,7 +215,7 @@ function autocompleteCity(el, country) {
         select: function (event, ui) {
             event.preventDefault();
             $(el).val(city);
-            $(el).attr("data-error", "false")
+            $(el).attr("data-error", "false");
         },
         open: function () {
             console.log($(this).attr('id'));
@@ -253,7 +238,7 @@ function autocompleteCity(el, country) {
                 "background-color": "aliceblue"
             })
         }
-    })
+    });
 }
 
 function autocompleteZip(el) {

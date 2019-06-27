@@ -16,14 +16,14 @@ $(document).ready(function () {
                 items: 3,
             }
         }
-    })
+    });
     // FIN Caroussel
 
     // Formulaire recherche de bureau HOME
     $('#btn_to_access_search_center_by_zip_france').click(function () {
-        $("#block_btn_to_access_search_center").hide()
+        $("#block_btn_to_access_search_center").hide();
         $("#form_search_center_home").show()
-    })
+    });
 
     $('#btn_to_access_search_center_foreigner').click(function () {
         $("#block_btn_to_access_search_center").hide();
@@ -54,7 +54,7 @@ $(document).ready(function () {
                 }
             }
         }
-    })
+    });
 
      $(".btn_to_access_search_bureau_a_distance").click(function(){
         jQuery.post(
@@ -63,12 +63,12 @@ $(document).ready(function () {
                 'action': 'search_center_elearning_around_footer_section_ajax',
             },
             function(response){
-                result = JSON.parse(response)
-                url = url_start+'/vae-'+result['ville'].slugVille+'/'+result['id']+'/'
+                result = JSON.parse(response);
+                url = url_start+'/vae-'+result['ville'].slugVille+'/'+result['id']+'/';
                 window.location.href = url
             }
         );
-    })
+    });
     // FIN Formulaire rechercche de bureau HOME
 
     // Formulaire en étapes Home
@@ -76,10 +76,10 @@ $(document).ready(function () {
         $("#form_vae_step").show();
         $("#btn_launch_form").hide()
         $('html,body').animate({scrollTop: $("#form_vae_step").offset().top}, 'slow');
-    })
+    });
     $(".close-form").click(function () {
         $("#form_vae_step").hide();
-        $("#btn_launch_form").show()
+        $("#btn_launch_form").show();
 
         // Effacer toutes les valeurs du form en le fermant
         clearForm($("#form_add_beneficiaire"));
@@ -87,16 +87,16 @@ $(document).ready(function () {
             $(this).addClass('d-none');
         });
         $("#form_add_beneficiaire #step_1").removeClass('d-none');
-    })
+    });
     // FIN Formulaire en étapes Home
 
     // Afficher image de cover sur page de category ou article
     if ($('.cover_img').length > 0) {
-        url_img_cover = $('.cover_img').attr('src')
+        url_img_cover = $('.cover_img').attr('src');
         $('#block_header_photo_landing').css('background', 'url(' + url_img_cover + ') no-repeat center')
     }
     if ($('.cover_img img').length > 0) {
-        url_img_cover = $('.cover_img img').attr('src')
+        url_img_cover = $('.cover_img img').attr('src');
         $('#block_header_photo_landing').css('background', 'url(' + url_img_cover + ') no-repeat center')
     }
     // FIN Afficher image de cover sur page de category ou article
@@ -104,13 +104,13 @@ $(document).ready(function () {
     // Menu : afficher icone contact
     //url_start = document.location.origin+"/entheor_wordpress/"
     //url_start = document.location.origin + "/entheor_wordpress_production/wordpress/"
-    url_start = document.location.origin
+    url_start = document.location.origin;
     $("header nav li, #responsive-menu-container ul li").each(function () {
         if ($(this).find('a').text() == 'Contact') {
-            $(this).find('a').text('')
+            $(this).find('a').text('');
             $(this).find('a').append('<img src="' + url_start + '/wp-content/themes/entheor/assets/image/icon_contact.png" width="24px" />')
         }
-    })
+    });
 
     // Transformer mon menu en dropdown de boostrap lorsque j'ai un sous-menu
     $(document).ready(function () {
@@ -131,17 +131,17 @@ $(document).ready(function () {
 
     // Avis : voir + ou - l'extrait
     $(".see_long_extract").click(function () {
-        short_extract = $(this).parent('.short_extract')
-        long_extract = $(this).closest('.extract').find('.long_extract')
-        short_extract.hide()
+        short_extract = $(this).parent('.short_extract');
+        long_extract = $(this).closest('.extract').find('.long_extract');
+        short_extract.hide();
         long_extract.show()
-    })
+    });
     $(".see_short_extract").click(function () {
-        long_extract = $(this).parent('.long_extract')
-        short_extract = $(this).closest('.extract').find('.short_extract')
-        long_extract.hide()
+        long_extract = $(this).parent('.long_extract');
+        short_extract = $(this).closest('.extract').find('.short_extract');
+        long_extract.hide();
         short_extract.show()
-    })
+    });
     // FIN Avis : voir + ou - l'extrait
 
     // Autocomplete code postal

@@ -69,7 +69,7 @@ $(document).ready(function () {
         );
     })
     // FIN Formulaire rechercche de bureau HOME
-    
+
     // Formulaire en étapes Home
     $("#btn_launch_form").click(function () {
         $("#form_vae_step").show();

@@ -18,7 +18,7 @@ echo get_post()->post_content;
         <div class="row">
             <?php
             
-            $url = "https://appli.entheor.com/web/api/advices";
+            $url = BASE_URL."api/advices";
 
             $auth = "devEntheo:3E5_yu*C";
 

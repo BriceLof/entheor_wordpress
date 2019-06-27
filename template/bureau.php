@@ -16,7 +16,7 @@ global $wpdb;
 
 
 // Lancement Curl pour récupérer le bureau
-$url = "https://appli.entheor.com/web/api/offices/".$idBureau;
+$url = BASE_URL."api/offices/".$idBureau;
 
 $auth = "devEntheo:3E5_yu*C";
 
@@ -53,7 +53,7 @@ if ($err) {
 ?>
     <input type="hidden" value="<?php echo $currentUrl ?>" name="current_url">
     <article>
-        <div id="block_header_photo" style="background: url(https://appli.entheor.com/web/uploads/bureau/<?php echo $result->banner ?>) no-repeat center;background-size: cover;">
+        <div id="block_header_photo" style="background: url(<?php echo BASE_URL ?>uploads/bureau/<?php echo $result->banner ?>) no-repeat center;background-size: cover;">
             <div id="overlay"></div>
             <?php
             if ( function_exists('yoast_breadcrumb') ) {
@@ -128,7 +128,7 @@ if ($err) {
                                 <div class="row">
                                     <?php if(!is_null($result->firstImage) && $result->firstImage != '') : ?>
                                         <div class="col-md-8 col-sm-12 img_focus">
-                                            <img class="" width="100%" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->firstImage ?>" />
+                                            <img class="" width="100%" src="<?php echo BASE_URL_IMAGE ?>uploads/bureau/<?php echo $result->firstImage ?>" />
                                         </div>
 
                                     <?php endif; ?>
@@ -137,13 +137,13 @@ if ($err) {
                                         <div class="row">
                                             <?php if(!is_null($result->secondImage) && $result->secondImage != '') : ?>
                                                 <div class="col-md-12">
-                                                    <img class="" width="100%" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->secondImage ?>" />
+                                                    <img class="" width="100%" src="<?php echo BASE_URL_IMAGE ?>uploads/bureau/<?php echo $result->secondImage ?>" />
                                                 </div>
 
                                             <?php endif; ?>
                                             <?php if(!is_null($result->thirdImage) && $result->thirdImage != '') : ?>
                                                 <div class="col-md-12">
-                                                    <img class="" width="100%" src="https://appli.entheor.com/web/uploads/bureau/<?php echo $result->thirdImage ?>" />
+                                                    <img class="" width="100%" src="<?php echo BASE_URL_IMAGE ?>uploads/bureau/<?php echo $result->thirdImage ?>" />
                                                 </div>
 
                                             <?php endif; ?>
@@ -158,7 +158,7 @@ if ($err) {
                                     <article style="overflow: hidden;">
                                         <div class="row">
                                             <?php if($consultant->image != '' && !is_null($consultant->image)) : ?>
-                                                <div class="img_profile_trainer col-md-3" style="background: url(https://appli.entheor.com/web/uploads/profile/<?php echo $consultant->id.'/'.$consultant->image ?>) no-repeat center;background-size: cover;"></div>
+                                                <div class="img_profile_trainer col-md-3" style="background: url(<?php echo BASE_URL ?>uploads/profile/<?php echo $consultant->id.'/'.$consultant->image ?>) no-repeat center;background-size: cover;"></div>
                                             <?php endif; ?>
                                             <div class="description_trainer <?php echo ($consultant->image != '' && !is_null($consultant->image)) ? 'col-md-9' : 'col-md-12' ?>">
                                                 <p class="trainer_name"><?php echo $consultant->prenom.' '.$consultant->nom ?></p>

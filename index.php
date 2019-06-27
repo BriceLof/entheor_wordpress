@@ -37,7 +37,7 @@ global $wpdb;
                           method="post">
                         <input type='hidden' name='action' value='searchCenter'/>
                         <input type="text" name="zip_search_center" id="zip_search_center"
-                               placeholder="Code Postal (5 chiffres)" class="col-md-3" required="required">
+                               placeholder="Code Postal (5 chiffres)" class="col-md-3" maxlength="5" required="required">
                         <input type="submit" name="search_center" value="Rechercher" id="zip_search_center_submit"
                                class="btn">
                     </form>
@@ -51,7 +51,7 @@ global $wpdb;
                         <input type='hidden' name='action' value='searchCenterForeigner'/>
                         <?php
                         // Lancement Curl pour récupérer liste des pays
-                        $url = "https://appli.entheor.com/web/api/countries";
+                        $url = BASE_URL."api/countries";
                         $auth = "devEntheo:3E5_yu*C";
                         $curl = curl_init();
                         curl_setopt_array($curl, array(
@@ -164,7 +164,7 @@ global $wpdb;
             <div class="row">
                 <?php
                 // Lancement Curl pour récupérer le bureau
-                $url = "https://appli.entheor.com/web/api/advices?limit=6";
+                $url = BASE_URL."api/advices?limit=6";
                 $auth = "devEntheo:3E5_yu*C";
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -418,7 +418,7 @@ global $wpdb;
                 <div class="owl-carousel" id="training_around_you_block">
                     <?php
                     // Lancement Curl pour récupérer le bureau
-                    $url = "https://appli.entheor.com/web/api/offices";
+                    $url = BASE_URL."api/offices";
                     $auth = "devEntheo:3E5_yu*C";
                     $curl = curl_init();
                     curl_setopt_array($curl, array(

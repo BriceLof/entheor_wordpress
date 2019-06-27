@@ -23,7 +23,7 @@ $idOffice = get_query_var('idOffice');
 
     <?php
     // Lancement Curl pour récupérer le bureau
-    $url = "https://appli.entheor.com/web/api/countries";
+    $url = BASE_URL."api/countries";
 
     $auth = "devEntheo:3E5_yu*C";
 

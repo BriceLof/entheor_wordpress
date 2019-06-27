@@ -11,6 +11,7 @@ function myStartSession() {
         session_start();
     }
 }
+
 add_theme_support( 'post-thumbnails' );
 function add_meta_tags() {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
@@ -102,7 +103,7 @@ function submit_form_add_beneficiaire(){
             "city" => (isset($_POST['city'])) ? $_POST['city'] : '',
         );
         // Lancement Curl pour insérer un bénéficiaire
-        $url = "https://appli.entheor.com/web/api/beneficiaries";
+        $url = BASE_URL."api/beneficiaries";
         $auth = "devEntheo:3E5_yu*C";
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -435,7 +436,7 @@ function search_center(){
     if (isset($_POST['search_center']) ) {
         $_SESSION['zip'] = $_POST['zip_search_center'];
         // Lancement Curl pour récupérer la ville
-        $url = "https://appli.entheor.com/web/api/offices?zip=" . $_POST['zip_search_center'] . "&limit=1";
+        $url = BASE_URL."api/offices?zip=" . $_POST['zip_search_center'] . "&limit=1";
         $auth = "devEntheo:3E5_yu*C";
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -484,7 +485,7 @@ function search_center_elearning() {
     if (isset($_POST['search_center_foreigner']) ) {
         $_SESSION['country'] = $_POST['country'];
         $_SESSION['city'] = $_POST['city'];
-        $url = "https://appli.entheor.com/web/api/offices?elearning=true";
+        $url = BASE_URL."api/offices?elearning=true";
         $auth = "devEntheo:3E5_yu*C";
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -519,7 +520,7 @@ add_action('admin_post_nopriv_searchCenterForeigner', 'search_center_elearning')
 add_action('admin_post_searchCenterForeigner', 'search_center_elearning');
 
 function search_center_elearning_around_footer_section_ajax() {
-    $url = "https://appli.entheor.com/web/api/offices?elearning=true";
+    $url = BASE_URL."api/offices?elearning=true";
     $auth = "devEntheo:3E5_yu*C";
     $curl = curl_init();
     curl_setopt_array($curl, array(

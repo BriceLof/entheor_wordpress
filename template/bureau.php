@@ -74,7 +74,7 @@ if ($err) {
                 $nombreBeneficiaire = count($result->beneficiaires);
                 $nombreAvis = 0;
                 foreach($result->beneficiaires as $beneficiaire){
-                    if(count($beneficiaire->avis) > 0){
+                    if((count($beneficiaire->avis) > 0) && ($beneficiaire->avis[0]->autorisationPublicationEntheor)){
                         $noteBeneficiaire = $beneficiaire->avis[0]->noteGlobale;
                         $notesTotal = $notesTotal + $noteBeneficiaire;
                         $nombreAvis++;
@@ -171,8 +171,7 @@ if ($err) {
 
                             <div id="tab_review" class="tab">
                                 <?php foreach($result->beneficiaires as $beneficiaire) : ?>
-                                    <?php //var_dump($beneficiaire) ?>
-                                    <?php if(count($beneficiaire->avis) > 0) : ?>
+                                    <?php if((count($beneficiaire->avis) > 0) && ($beneficiaire->avis[0]->autorisationPublicationEntheor)) : ?>
                                         <article>
                                             <?php
                                             $datePublishRaw = $beneficiaire->avis[0]->date;

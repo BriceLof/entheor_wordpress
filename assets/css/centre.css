@@ -73,6 +73,13 @@ body header nav {
   overflow: hidden;
 }
 
+.error{
+    border: 1px solid red !important;
+}
+label.error{
+    display: none !important;
+}
+
 #block_header_photo {
   height: 200px;
   text-align: center;

@@ -26,15 +26,16 @@ $(document).ready(function () {
     })
 
     $('#btn_to_access_search_center_foreigner').click(function () {
-        $("#block_btn_to_access_search_center").hide()
+        $("#block_btn_to_access_search_center").hide();
         $("#form_search_center_foreigner_home").show()
-    })
+    });
 
     $("#formulaire_search_center_home").validate({
         rules: {
             "zip_search_center": {
                 required: true,
                 digits: true,
+                minlength: 5,
                 remote: {
                     url: 'https://appli-dev.entheor.com/web/api/cities',
                     type: 'get',

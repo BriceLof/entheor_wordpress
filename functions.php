@@ -73,6 +73,15 @@ add_action('wp_ajax_domaine_metier_vae_ajax', 'domaine_metier_vae_ajax');
 function submit_form_add_beneficiaire(){
     if (isset($_POST['formulaire_add_beneficiaire']))
     {
+        $origine = '';
+        if(isset($_POST['form_vae_3_steps'])){
+            $origine = "Entheor.com_3étapes_naturel";
+        }
+
+        if(isset($_POST['form_bureau'])){
+            $origine = "Entheor.com_rappel_france_naturel";
+        }
+
         $data = array(
             "bureauId" => (isset($_POST['bureau'])) ? $_POST['bureau'] : null,
             "codePostal" => (isset($_POST['zip_conso'])) ? $_POST['zip_conso'] : '',
@@ -85,7 +94,7 @@ function submit_form_add_beneficiaire(){
             "heureRappel" => (isset($_POST['time_preference'])) ? $_POST['time_preference'] : 'Indifférent',
             "nomConso" => $_POST['name'],
             "prenomConso"=> $_POST['surname'],
-            "origineMer" => 'Entheor.com / Naturel',
+            "origineMer" => $origine,
             "poste" => (isset($_POST['metiers'])) ? $_POST['metiers'] : '',
             "experience" => (isset($_POST['experience'])) ? $_POST['experience'] : '',
             "motivation" => (isset($_POST['reason'])) ? $_POST['reason'] : '',
@@ -121,9 +130,11 @@ function submit_form_add_beneficiaire(){
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
+            <p>Alerte 8</p>
             <p>Voici les informations du contact : </p>
             <ul>
                 <li>Date et heure de la mise en relation : ".date('d/m/Y à h:i')."</li>
+                <li>Origine : ".$origine."</li>
                 <li>Civilité, nom et prénom : ".ucfirst($data['civiliteConso'])." ".ucfirst($data['nomConso'])." ".ucfirst($data['prenomConso'])."</li>
                 <li>Statut : ".ucfirst($data['statut'])."</li>
                 <li>Téléphone : ".$data['telConso']."</li>
@@ -173,13 +184,7 @@ function submit_form_add_beneficiaire(){
 //        } else {
 //            echo $response;
 //        }
-        if(isset($_SESSION['url_before_mer']) && $_SESSION['url_before_mer'] != '' && !is_null($_SESSION['url_before_mer']))
-        {
-            wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#confirmation_mer');
-        }
-        else {
-            wp_redirect(home_url() . '/demande-contact-enregistre/');
-        }
+        wp_redirect(home_url() . '#confirmation_mer');
     }
 }
 add_action('admin_post_nopriv_submitFormAddBeneficiaire', 'submit_form_add_beneficiaire');
@@ -190,6 +195,7 @@ function submit_form_devenir_accompagnateur(){
     {
         $data = array(
             "statut" => (isset($_POST['status'])) ? $_POST['status'] : '',
+            "origine" => 'Accompagnateur VAE',
             "civiliteConso" => $_POST['civility'],
             "telConso" => $_POST['telephone'],
             "emailConso" => $_POST['email'],
@@ -200,8 +206,11 @@ function submit_form_devenir_accompagnateur(){
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
+            <p>Alerte 8</p>
             <p>Voici les informations du contact : </p>
             <ul>
+                <li>Date et heure de la demande : ".date('d/m/Y à h:i')."</li>
+                <li>Origine : ".$data['origine']."</li>
                 <li>Civilité, nom et prénom : ".ucfirst($data['civiliteConso'])." ".ucfirst($data['nomConso'])." ".ucfirst($data['prenomConso'])."</li>
                 <li>Statut : ".ucfirst($data['statut'])."</li>
                 <li>Téléphone : ".$data['telConso']."</li>
@@ -249,7 +258,7 @@ function submit_form_devenir_accompagnateur(){
 //        } else {
 //            echo $response;
 //        }
-        wp_redirect( home_url().'/demande-contact-enregistre/' );
+        wp_redirect(home_url() . '#confirmation_mer');
     }
 }
 add_action('admin_post_nopriv_submitFormDevenirAccompagnateur', 'submit_form_devenir_accompagnateur');
@@ -260,6 +269,7 @@ function submit_form_vae_entreprise(){
     {
         $data = array(
             "statut" => (isset($_POST['status'])) ? $_POST['status'] : '',
+            "origine" => 'Entheor.com_Entreprise_naturel',
             "civiliteConso" => $_POST['civility'],
             "telConso" => $_POST['telephone'],
             "emailConso" => $_POST['email'],
@@ -274,6 +284,8 @@ function submit_form_vae_entreprise(){
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
             <p>Voici les informations du contact : </p>
             <ul>
+                <li>Date et heure de la demande : ".date('d/m/Y à h:i')."</li>
+                <li>Origine : ".$data['origine']."</li>
                 <li>Civilité, nom et prénom : ".ucfirst($data['civiliteConso'])." ".ucfirst($data['nomConso'])." ".ucfirst($data['prenomConso'])."</li>
                 <li>Statut : ".ucfirst($data['statut'])."</li>
                 <li>Téléphone : ".$data['telConso']."</li>
@@ -331,6 +343,9 @@ add_action('admin_post_submitFormVaeEntreprise', 'submit_form_vae_entreprise');
 // Page contact
 function submit_form_contact(){
     if (isset($_POST['formulaire_contact'])) {
+        // Captcha Google
+        $captchaVerify = captchaGoogleVerify($_POST['token_captcha']);
+
         $data = array(
             "objet" => (isset($_POST['objet'])) ? $_POST['objet'] : '',
             "nom" => (isset($_POST['nom'])) ? $_POST['nom'] : '',
@@ -356,6 +371,7 @@ function submit_form_contact(){
             'replyTo' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'to' => array(
                 array('email' => 'brice.lof@gmail.com', 'name' => 'Brice Lof'),
+                array('email' => 'f.azoulay@entheor.com', 'name' => 'Franck Azoulay'),
                 array('email' => 'contact@entheor.com', 'name' => 'Contact'),
             ),
             'bcc' => array(array("email" => "support.informatique@entheor.com", "name" => "support.informatique@entheor.com")),
@@ -463,6 +479,7 @@ function search_center(){
 }
 add_action('admin_post_nopriv_searchCenter', 'search_center');
 add_action('admin_post_searchCenter', 'search_center');
+
 function search_center_elearning() {
     if (isset($_POST['search_center_foreigner']) ) {
         $_SESSION['country'] = $_POST['country'];
@@ -500,6 +517,37 @@ function search_center_elearning() {
 }
 add_action('admin_post_nopriv_searchCenterForeigner', 'search_center_elearning');
 add_action('admin_post_searchCenterForeigner', 'search_center_elearning');
+
+function search_center_elearning_around_footer_section_ajax() {
+    $url = "https://appli.entheor.com/web/api/offices?elearning=true";
+    $auth = "devEntheo:3E5_yu*C";
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_POSTFIELDS => "",
+        CURLOPT_USERPWD => $auth,
+        CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
+        CURLOPT_SSL_VERIFYHOST => false,
+        CURLOPT_SSL_VERIFYPEER => false
+    ));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        echo $response;exit;
+    }
+}
+add_action('wp_ajax_nopriv_search_center_elearning_around_footer_section_ajax', 'search_center_elearning_around_footer_section_ajax');
+add_action('wp_ajax_search_center_elearning_around_footer_section_ajax', 'search_center_elearning_around_footer_section_ajax');
 // Update meta title et description
 function title_meta_update($titleYoast)
 {
@@ -545,3 +593,36 @@ function description_meta_update($descYoast)
     }
 }
 add_filter('wpseo_metadesc', 'description_meta_update');
+
+
+function captchaGoogleVerify($token){
+
+    if(empty($token)){
+        wp_redirect(home_url() . '/contact/');
+    }
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://www.google.com/recaptcha/api/siteverify",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => "secret=6Lf6tKkUAAAAADpYxmc1jBcuQo-eZjYQ5jGpfEnB&response=".$token,
+        CURLOPT_SSL_VERIFYHOST => false,
+        CURLOPT_SSL_VERIFYPEER => false
+    ));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+
+    $result = json_decode($response);
+    $success = $result->success;
+
+    // back page contact if something wrong with captcha
+    if($success !== true){
+        wp_redirect(home_url() . '/contact/');
+    }
+
+    return $success;
+}
+
+

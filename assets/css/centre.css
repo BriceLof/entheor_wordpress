@@ -193,13 +193,16 @@ body header nav {
   padding: 8px;
   text-align: center;
 }
-#content aside #form_mise_en_relation {
+#content aside #form_mer {
   border: 1px solid #f1f1f1;
-  padding: 10px;
   margin-top: -16px;
+}
+#content aside #form_mer #form_mise_en_relation {
+  margin-top: 14px;
+  padding: 0 14px;
   font-style: italic;
 }
-#content aside #form_mise_en_relation input, #content aside #form_mise_en_relation select {
+#content aside #form_mer #form_mise_en_relation input, #content aside #form_mer #form_mise_en_relation select, #content aside #form_mer #form_mise_en_relation textarea {
   border: 1px solid #f1f1f1;
   padding: 10px 15px;
   border-radius: 4px;
@@ -209,19 +212,19 @@ body header nav {
   color: #818181;
   margin-bottom: 12px;
 }
-#content aside #form_mise_en_relation #civility_block .civility_choice .selected {
+#content aside #form_mer #form_mise_en_relation #civility_block .civility_choice .selected {
   border: 2px solid #97bd12;
 }
-#content aside #form_mise_en_relation #civility_block .civility_choice p {
+#content aside #form_mer #form_mise_en_relation #civility_block .civility_choice p {
   border: 1px solid #f1f1f1;
   padding: 10px 15px;
   border-radius: 4px;
   text-align: center;
 }
-#content aside #form_mise_en_relation #civility_block .civility_choice p:hover {
+#content aside #form_mer #form_mise_en_relation #civility_block .civility_choice p:hover {
   cursor: pointer;
 }
-#content aside #form_mise_en_relation .btn_submit_form_mer {
+#content aside #form_mer #form_mise_en_relation .btn_submit_form_mer {
   text-align: center;
   margin: auto;
   display: block;
@@ -390,12 +393,6 @@ body header nav {
   border: 1px solid red !important;
 }
 #form_step_diagnostic label.error {
-  display: none !important;
-}
-.error{
-  border: 1px solid red !important;
-}
-label.error{
   display: none !important;
 }
 

@@ -110,6 +110,7 @@
         <div class="modal-footer" >
             <button type="button" class="btn btn_next_step_form" disabled="disabled">Suivant</button>
             <input type="hidden" name="formulaire_add_beneficiaire"/>
+            <input type='hidden' name='form_vae_3_steps'/>
         </div>
     </form>
 </div>

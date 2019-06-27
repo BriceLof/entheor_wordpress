@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     // Caroussel
     $('.owl-carousel').owlCarousel({
         loop: true,
@@ -56,6 +55,21 @@ $(document).ready(function () {
         }
     })
 
+     $(".btn_to_access_search_bureau_a_distance").click(function(){
+        jQuery.post(
+            ajaxurl,
+            {
+                'action': 'search_center_elearning_around_footer_section_ajax',
+            },
+            function(response){
+                result = JSON.parse(response)
+                url = url_start+'/vae-'+result['ville'].slugVille+'/'+result['id']+'/'
+                window.location.href = url
+            }
+        );
+    })
+    // FIN Formulaire rechercche de bureau HOME
+    
     // Formulaire en étapes Home
     $("#btn_launch_form").click(function () {
         $("#form_vae_step").show();
@@ -88,7 +102,8 @@ $(document).ready(function () {
 
     // Menu : afficher icone contact
     //url_start = document.location.origin+"/entheor_wordpress/"
-    url_start = document.location.origin + "/entheor_wordpress_production/wordpress/"
+    //url_start = document.location.origin + "/entheor_wordpress_production/wordpress/"
+    url_start = document.location.origin
     $("header nav li, #responsive-menu-container ul li").each(function () {
         if ($(this).find('a').text() == 'Contact') {
             $(this).find('a').text('')
@@ -155,10 +170,6 @@ $(document).ready(function () {
             $(this).attr("data-error", "true");
     });
 
-    $("#email").rules("add", {
-        required: true,
-        email: true
-    })
 
     $("#city_search").rules("add", {
         required: true,
@@ -173,10 +184,10 @@ $(document).ready(function () {
 
     // Message validation mise en relation
     if (window.location.hash != '' && window.location.hash == "#confirmation_mer") {
-        $("#block_confirmation_mer").show()
-        setTimeout(function () {
-            $("#block_confirmation_mer").hide()
-        }, 4000);
+        $(".block_confirmation_mer").show()
+        $(".closed_popup").click(function(){
+            $(".block_confirmation_mer").hide()
+        })
     }
     // FIN Message validation mise en relation
 
@@ -320,4 +331,5 @@ function clearForm(form) {
     $(form).find("select").each(function () {
         $(this).find('option:selected').removeAttr('selected')
     })
+
 }

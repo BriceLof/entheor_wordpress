@@ -47,13 +47,20 @@ if ($page->post_name == 'contact' ){
             }
             ?>
             <h1><?php echo $page->post_title; ?></h1>
+
         </div>
         <section class="container content" style="padding-top:40px">
             <?php
             the_post();
             the_content();
+
             ?>
         </section>
+
+        <?php if(get_the_ID() == 249) : ?>
+            <a class="btn" href="<?php echo get_permalink(get_post(90)->ID) ?>" style="margin: auto;width: 190px;display: block;margin-bottom: 25px;margin-top: 25px;">Contactez nous</a>
+        <?php endif; ?>
+
         <?php
     }
 }

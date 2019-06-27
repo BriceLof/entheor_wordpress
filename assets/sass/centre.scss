@@ -146,42 +146,45 @@
       padding: 8px;
       text-align: center;
     }
-    #form_mise_en_relation{
+    #form_mer{
       border: 1px solid $lightGrey;
-      padding: 10px;
       margin-top: -16px;
-      font-style: italic;
-      input, select{
-        border: 1px solid $lightGrey;
-        padding: 10px 15px;
-        border-radius: 4px;
-        margin: auto;
-        width: 100%;
-        display: block;
-        color: $grey;
-        margin-bottom: 12px;
-      }
-      #civility_block{
-        .civility_choice{
-          .selected{
-            border: 2px solid $green;
-          }
-          p{
-            border: 1px solid $lightGrey;
-            padding: 10px 15px;
-            border-radius: 4px;
-            text-align: center;
-            &:hover{
-              cursor: pointer;
+      #form_mise_en_relation{
+        margin-top: 14px;
+        padding: 0 14px;
+        font-style: italic;
+        input, select, textarea{
+          border: 1px solid $lightGrey;
+          padding: 10px 15px;
+          border-radius: 4px;
+          margin: auto;
+          width: 100%;
+          display: block;
+          color: $grey;
+          margin-bottom: 12px;
+        }
+        #civility_block{
+          .civility_choice{
+            .selected{
+              border: 2px solid $green;
+            }
+            p{
+              border: 1px solid $lightGrey;
+              padding: 10px 15px;
+              border-radius: 4px;
+              text-align: center;
+              &:hover{
+                cursor: pointer;
+              }
             }
           }
         }
-      }
-      .btn_submit_form_mer{
-        text-align: center;
-        margin: auto;
-        display: block;
-        padding: 6px 40px;
+        .btn_submit_form_mer{
+          text-align: center;
+          margin: auto;
+          display: block;
+          padding: 6px 40px;
+        }
       }
     }
 

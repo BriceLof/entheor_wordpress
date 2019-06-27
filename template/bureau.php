@@ -178,7 +178,7 @@ if ($err) {
                                             $datePublishRaw = $beneficiaire->avis[0]->date;
                                             $datePublishFinal = new DateTime($datePublishRaw);
                                             ?>
-                                            <p class="date">Avis publié le <?php echo $datePublishFinal->format('d/m/Y') ?></p>
+                                            <p class="date">Avis VAE publié le <?php echo $datePublishFinal->format('d/m/Y') ?></p>
                                             <div class="note stars">
                                                 <?php for ($j = 0; $j < 5; $j++) : ?>
                                                     <?php if ($j < $beneficiaire->avis[0]->noteGlobale) : ?>
@@ -211,8 +211,9 @@ if ($err) {
                     <div class="row">
                         <p class="col-md-12" id="etre_rappele">Être rappelé</p>
                         <!-- Form : ajout beneficiaire -->
-                        <div id="form_mer">
+                        <div id="form_mer" class="col-md-12">
                             <form id="form_mise_en_relation" action='<?php echo admin_url( 'admin-post.php' ); ?>' method="post">
+                                <div class="g-recaptcha" data-sitekey="6LfoaakUAAAAAKjkFbpDSQgkRwk2KSLLdQ9AhNfj"></div>
                                 <input type="hidden" name="bureau" value="<?php echo $result->id ?>"/>
                                 <?php
                                 set_query_var( 'idOffice', $result->id );

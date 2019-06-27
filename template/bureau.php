@@ -60,7 +60,7 @@ if ($err) {
                 yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
             }
             ?>
-            <?php if ($result->id == 290) : ?>
+            <?php if ($result->id == ID_BUREAU_DISTANCE) : ?>
                 <h1>Accompagnement VAE
                     à distance</h1>
             <?php else : ?>

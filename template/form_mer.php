@@ -16,7 +16,7 @@ $idOffice = get_query_var('idOffice');
 <input type="tel" name="telephone" placeholder="Téléphone" maxlength="10" required/>
 
 
-<?php if ($idOffice != 290) : ?>
+<?php if ($idOffice != ID_BUREAU_DISTANCE) : ?>
     <input type="text" id="form_mer_zip" name="zip_conso" placeholder="Votre code postal (5 chiffres)" maxlength="5"
            value="<?php echo $_SESSION['zip'] ?>" required/>
 <?php else: ?>

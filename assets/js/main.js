@@ -56,7 +56,7 @@ $(document).ready(function () {
         }
     });
 
-     /*$(".btn_to_access_search_bureau_a_distance").click(function(){
+     $(".btn_to_access_search_bureau_a_distance").click(function(){
         jQuery.post(
             ajaxurl,
             {
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 window.location.href = url
             }
         );
-    });*/
+    });
     // FIN Formulaire rechercche de bureau HOME
 
     // Formulaire en étapes Home

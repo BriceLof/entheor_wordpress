@@ -112,6 +112,7 @@
             <input type="hidden" name="formulaire_add_beneficiaire"/>
             <input type='hidden' name='form_vae_3_steps'/>
         </div>
+        <input type='hidden' name='token_captcha' id='token_captcha_hidden'>
     </form>
 </div>
 

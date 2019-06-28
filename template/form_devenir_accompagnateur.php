@@ -26,5 +26,6 @@
 <input type="submit" class="btn btn_submit_form_mer" value="Valider">
 <p style="font-size: 11px;text-align: center;margin-top: 6px;">gratuit & sans engagement</p>
 <input type="hidden" name="formulaire_devenir_accompagnateur"/>
+<input type='hidden' name='token_captcha' id='token_captcha_hidden'>
 
 

@@ -98,5 +98,6 @@ $idOffice = get_query_var('idOffice');
 <p style="font-size: 11px;text-align: center;margin-top: 6px;">gratuit & sans engagement</p>
 <input type="hidden" name="formulaire_add_beneficiaire"/>
 <input type="hidden" name="form_bureau"/>
+<input type='hidden' name='token_captcha' id='token_captcha_hidden'>
 
 

@@ -74,6 +74,9 @@ add_action('wp_ajax_domaine_metier_vae_ajax', 'domaine_metier_vae_ajax');
 function submit_form_add_beneficiaire(){
     if (isset($_POST['formulaire_add_beneficiaire']))
     {
+        // Captcha Google
+        $captchaVerify = captchaGoogleVerify($_POST['token_captcha']);
+
         $origine = '';
         if(isset($_POST['form_vae_3_steps'])){
             $origine = "Entheor.com_3étapes_naturel";
@@ -194,6 +197,9 @@ add_action('admin_post_submitFormAddBeneficiaire', 'submit_form_add_beneficiaire
 function submit_form_devenir_accompagnateur(){
     if (isset($_POST['formulaire_devenir_accompagnateur']))
     {
+        // Captcha Google
+        $captchaVerify = captchaGoogleVerify($_POST['token_captcha']);
+
         $data = array(
             "statut" => (isset($_POST['status'])) ? $_POST['status'] : '',
             "origine" => 'Accompagnateur VAE',
@@ -268,6 +274,9 @@ add_action('admin_post_submitFormDevenirAccompagnateur', 'submit_form_devenir_ac
 function submit_form_vae_entreprise(){
     if (isset($_POST['formulaire_vae_entreprise']))
     {
+        // Captcha Google
+        $captchaVerify = captchaGoogleVerify($_POST['token_captcha']);
+
         $data = array(
             "statut" => (isset($_POST['status'])) ? $_POST['status'] : '',
             "origine" => 'Entheor.com_Entreprise_naturel',
@@ -599,7 +608,7 @@ add_filter('wpseo_metadesc', 'description_meta_update');
 function captchaGoogleVerify($token){
 
     if(empty($token)){
-        wp_redirect(home_url() . '/contact/');
+        wp_redirect(home_url() . '/');
     }
 
     $curl = curl_init();

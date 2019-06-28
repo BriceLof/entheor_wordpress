@@ -152,14 +152,17 @@ function submit_form_add_beneficiaire(){
             'sender' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'replyTo' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'to' => array(
-                array('email' => 'brice.lof@gmail.com', 'name' => 'Brice Lof'),
-                array('email' => 'f.azoulay@entheor.com', 'name' => 'Franck Azoulay'),
+                array('email' => 'shulhadimitry@gmail.com', 'name' => 'shulhadimitry@gmail.com'),
                 array('email' => 'audrey.azoulay@entheor.com', 'name' => 'Audrey Azoulay'),
-                array('email' => 'christine.clement@entheor.com', 'name' => 'Christine Clement'),
-                array('email' => 'ph.rouzaud@entheor.com', 'name' => 'Philippe Rouzaud'),
-                array('email' => 'contact@entheor.com', 'name' => 'Contact'),
             ),
-            'bcc' => array(array("email" => "support.informatique@entheor.com", "name" => "support.informatique@entheor.com")),
+            'cc' => array(
+                array('email' => 'contact@entheor.com', 'name' => 'Contact'),
+                array('email' => 'f.azoulay@entheor.com', 'name' => 'Franck Azoulay'),
+            ),
+            'bcc' => array(
+                array("email" => "support.informatique@entheor.com", "name" => "support.informatique@entheor.com"),
+                array("email" => "brice.lof@gmail.com", "name" => "Brice Lof")
+            ),
             'subject' => 'Mise en relation Enthéor.com',
             'htmlContent' => $message,
             'tags' => array('mer_entheor.com')
@@ -380,11 +383,17 @@ function submit_form_contact(){
             'sender' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'replyTo' => array('email' => 'admin@entheor.com', 'name' => 'Admin Entheor'),
             'to' => array(
-                array('email' => 'brice.lof@gmail.com', 'name' => 'Brice Lof'),
-                array('email' => 'f.azoulay@entheor.com', 'name' => 'Franck Azoulay'),
-                array('email' => 'contact@entheor.com', 'name' => 'Contact'),
+                array('email' => 'shulhadimitry@gmail.com', 'name' => 'shulhadimitry@gmail.com'),
+                array('email' => 'audrey.azoulay@entheor.com', 'name' => 'Audrey Azoulay'),
             ),
-            'bcc' => array(array("email" => "support.informatique@entheor.com", "name" => "support.informatique@entheor.com")),
+            'cc' => array(
+                array('email' => 'contact@entheor.com', 'name' => 'Contact'),
+                array('email' => 'f.azoulay@entheor.com', 'name' => 'Franck Azoulay'),
+            ),
+            'bcc' => array(
+                array("email" => "support.informatique@entheor.com", "name" => "support.informatique@entheor.com"),
+                array("email" => "brice.lof@gmail.com", "name" => "Brice Lof")
+            ),
             'subject' => 'Demande de contact Enthéor.com',
             'htmlContent' => $message,
             'tags' => array('demande_contact_entheor.com')

@@ -17,7 +17,7 @@ $( function() {
     $('.civility_choice').click(function(){
         $(".btn_submit_form_mer").removeAttr('disabled')
     })
-   
+
 } );
 
 // Cacher les details de localisation si on est pas sur la tab de description

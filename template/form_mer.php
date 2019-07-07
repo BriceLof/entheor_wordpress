@@ -7,7 +7,7 @@ $idOffice = get_query_var('idOffice');
     <div class="civility_choice col-md-6"><p data-civility="Mme">Madame</p></div>
     <div class="civility_choice col-md-6"><p data-civility="M.">Monsieur</p></div>
 </div>
-<input type="hidden" name="civility" value="" required/>
+<input type="hidden" name="civility" id="civilityHidden" value="" required/>
 
 <input type="text" name="name" placeholder="Nom" required/>
 <input type="text" name="surname" placeholder="Prénom" required/>
@@ -94,7 +94,7 @@ $idOffice = get_query_var('idOffice');
     <option value="Master et plus">Master et plus</option>
 </select>
 
-<input type="submit" class="btn btn_submit_form_mer" value="Valider">
+<input type="submit" class="btn btn_submit_form_mer" value="Valider" disabled>
 <p style="font-size: 11px;text-align: center;margin-top: 6px;">gratuit & sans engagement</p>
 <input type="hidden" name="formulaire_add_beneficiaire"/>
 <input type="hidden" name="form_bureau"/>

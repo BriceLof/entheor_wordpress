@@ -427,7 +427,7 @@ function verifMail(val)
     if(!regex.test(val))
     {
         arrayError.push("errorMailRegex")
-        field.css('border', '1px solid red')
+        field.css('border', '1px solid red !important')
     }
 }
 
@@ -437,7 +437,7 @@ function verifPhone(val)
     if(!regex.test(val))
     {
         arrayError.push("errorPhoneRegex")
-        field.css('border', '1px solid red')
+        field.css('border', '1px solid red !important')
     }
 }
 
@@ -445,6 +445,6 @@ function verifMessage(val)
 {
     if(val.indexOf('http://') > -1 || val.indexOf('https://') > -1){
         arrayError.push("errorMessage")
-        field.css('border', '1px solid red')
+        field.css('border', '1px solid red !important')
     }
 }

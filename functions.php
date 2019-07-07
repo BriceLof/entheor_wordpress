@@ -106,10 +106,9 @@ function submit_form_add_beneficiaire(){
             "city" => (isset($_POST['city'])) ? $_POST['city'] : '',
         );
 
-        foreach($data as $value){
-            if($value == ''){
-                wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#error');
-            }
+        if($data['civiliteConso'] == '' || $data['telConso'] == '' || $data['emailConso'] == '' || $data['nomConso'] == '' || $data['prenomConso'] == '' || $data['origineMer'] == ''){
+            wp_redirect(home_url() . '#error');
+            exit;
         }
 
         // Lancement Curl pour insérer un bénéficiaire
@@ -223,7 +222,8 @@ function submit_form_devenir_accompagnateur(){
 
         foreach($data as $value){
             if($value == ''){
-                wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#error');
+                wp_redirect(home_url() . '#error');
+                exit;
             }
         }
 
@@ -309,7 +309,8 @@ function submit_form_vae_entreprise(){
 
         foreach($data as $value){
             if($value == ''){
-                wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#error');
+                wp_redirect(home_url() . '#error');
+                exit;
             }
         }
 
@@ -391,7 +392,8 @@ function submit_form_contact(){
 
         foreach($data as $value){
             if($value == ''){
-                wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#error');
+                wp_redirect(home_url() . '#error');
+                exit;
             }
         }
         // Mail envoye par smtp de sentingblue

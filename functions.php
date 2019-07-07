@@ -150,6 +150,7 @@ function submit_form_add_beneficiaire(){
                 <li>Téléphone : ".$data['telConso']."</li>
                 <li>Horaire de rappel : ".$data['heureRappel']."</li>
                 <li>Email : ".$data['emailConso']."</li>
+                <li>Code postal : ".$data['codePostal']."</li>
                 <li>Diplôme : ".$data['diplomeVise']."</li>
                 <li>Secteur d'activité : ".$data['domaineVae']."</li>
             </ul>

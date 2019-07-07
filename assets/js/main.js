@@ -192,6 +192,15 @@ $(document).ready(function () {
     }
     // FIN Message validation mise en relation
 
+    // Message Erreur mise en relation
+    if (window.location.hash != '' && window.location.hash == "#error") {
+        $(".block_error_mer").show()
+        $(".closed_popup").click(function(){
+            $(".block_error_mer").hide()
+        })
+    }
+    // FIN Message Erreur mise en relation
+
 });
 
 function autocompleteCity(el, country) {
@@ -333,4 +342,109 @@ function clearForm(form) {
         $(this).find('option:selected').removeAttr('selected')
     })
 
+}
+
+
+function validateForm()
+{
+    arrayError = []
+    $("form .validText").each(function(){
+       field = $(this)
+        field.css('border', '1px solid rgb(169, 169, 169)')
+       checkIfValid(field, 'text')
+    })
+
+    $("form .validEmail").each(function(){
+        field = $(this)
+        field.css('border', '1px solid rgb(169, 169, 169)')
+        checkIfValid(field, 'email')
+    })
+
+    $("form .validPhone").each(function(){
+        field = $(this)
+        field.css('border', '1px solid rgb(169, 169, 169)')
+        checkIfValid(field, 'phone')
+    })
+
+    $("form .validMessage").each(function(){
+        field = $(this)
+        field.css('border', '1px solid rgb(169, 169, 169)')
+        checkIfValid(field, 'message')
+    })
+
+    console.log(arrayError)
+    //return false
+    if(arrayError.length > 0){
+        return false
+    }else{
+        return true
+    }
+
+}
+
+function checkIfValid(field, type){
+    value = field.val()
+    if(type == 'text'){
+        if(value == ''){
+            arrayError.push("errorText")
+            field.css('border', '1px solid red')
+        }
+    }
+
+    if(type == 'email'){
+        if(value == ''){
+            arrayError.push("errorMailVide")
+            field.css('border', '1px solid red')
+        }
+        else{
+            verifMail(value)
+        }
+    }
+
+    if(type == 'phone'){
+        if(value == ''){
+            arrayError.push("errorPhoneVide")
+            field.css('border', '1px solid red')
+        }
+        else{
+            verifPhone(value)
+        }
+    }
+
+    if(type == 'message'){
+        if(value == ''){
+            arrayError.push("errorMessageVide")
+            field.css('border', '1px solid red')
+        }
+        else{
+            verifMessage(value)
+        }
+    }
+}
+function verifMail(val)
+{
+    var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+    if(!regex.test(val))
+    {
+        arrayError.push("errorMailRegex")
+        field.css('border', '1px solid red')
+    }
+}
+
+function verifPhone(val)
+{
+    var regex = /^((\+)33|0)[1-9](\d{2}){4}$/;
+    if(!regex.test(val))
+    {
+        arrayError.push("errorPhoneRegex")
+        field.css('border', '1px solid red')
+    }
+}
+
+function verifMessage(val)
+{
+    if(val.indexOf('http://') > -1 || val.indexOf('https://') > -1){
+        arrayError.push("errorMessage")
+        field.css('border', '1px solid red')
+    }
 }

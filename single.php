@@ -22,6 +22,11 @@ $category = get_the_category($post->ID);
             <p class="message_mail_sent">Votre diagnostic a bien été enregistré.<br>Un consultant vous contacte dans la journée.</p>
         </section>
 
+        <section id="error" class="block_error_mer" style="display: none">
+            <span class="closed_popup">×</span>
+            <p class="message_error">Une erreur s'est produite lors de la validation du formulaire</p>
+        </section>
+
         <section id="content" class="container">
             <div class="row">
                 <div id="block_content_article" class="col-md-9 content">

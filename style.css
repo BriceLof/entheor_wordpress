@@ -592,6 +592,25 @@ body header nav {
   cursor: pointer;
 }
 
+.block_error_mer {
+  width: 50%;
+  margin: auto;
+}
+.block_error_mer .message_error {
+  text-align: center;
+  font-size: 20px;
+  border: 2px solid red;
+  padding: 50px 0px;
+  margin-top: 25px;
+  font-weight: bold;
+}
+.block_error_mer .closed_popup {
+  float: right;
+  font-size: 30px;
+  margin-right: 11px;
+  cursor: pointer;
+}
+
 .btn_back_home {
   background-color: #97bd12;
   text-align: center;

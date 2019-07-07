@@ -14,8 +14,15 @@ $( function() {
 
     // 1 : Zipcode
     form.find('#step_1 input').keyup(function() {
-        if($(this).val().length == 5){
+        regexCp = /^[0-9]{5}$/
+        if($(this).val().length == 5 && regexCp.test($(this).val())){
             $(".btn_next_step_form").removeAttr('disabled')
+            $(this).keyup(function(){
+                if($(this).val().length != 5 || !regexCp.test($(this).val())){
+                    $(".btn_next_step_form").attr('disabled', 'disabled')
+                }
+            })
+
             // 2 : Domaine et métier
             $(".btn_next_step_form").click(function(){
                 $("#progress_bar").css("width", "20%")
@@ -192,8 +199,9 @@ $( function() {
 
                                                                 email = ''
                                                                 telephone = ''
-                                                                block_coordonnee_part2.find('input').keyup(function(){
 
+                                                                block_coordonnee_part2.find('input').keyup(function(){
+                                                                    arrayError = []
                                                                     if($(this).attr('name') == 'email')
                                                                     {
                                                                         email = $(this).val()
@@ -205,15 +213,20 @@ $( function() {
 
                                                                     if (email != '' && telephone != '') {
 
-                                                                        $(".btn_next_step_form").text('Valider')
-                                                                        $(".btn_next_step_form").removeAttr('disabled')
+                                                                        verifMail(email)
+                                                                        verifPhone(telephone)
+                                                                        console.log(arrayError)
+                                                                        if(arrayError.length > 0){
+                                                                            $(".btn_next_step_form").attr('disabled', 'disabled')
+                                                                        }else{
+                                                                            $(".btn_next_step_form").text('Valider')
+                                                                            $(".btn_next_step_form").removeAttr('disabled')
 
-                                                                        // Final : validation du formulaire
-                                                                        $(".btn_next_step_form").click(function() {
-                                                                            $( "#form_add_beneficiaire" ).submit();
-                                                                        })
-
-
+                                                                            // Final : validation du formulaire
+                                                                            $(".btn_next_step_form").click(function() {
+                                                                                $( "#form_add_beneficiaire" ).submit();
+                                                                            })
+                                                                        }
                                                                     }
                                                                 })
                                                             })
@@ -242,3 +255,24 @@ $( function() {
         $('input[name=civility]').val(civility)
     })
 });
+
+
+
+
+function verifMail(val)
+{
+    var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+    if(!regex.test(val))
+    {
+        arrayError.push("errorMailRegex")
+    }
+}
+
+function verifPhone(val)
+{
+    var regex = /^((\+)33|0)[1-9](\d{2}){4}$/;
+    if(!regex.test(val))
+    {
+        arrayError.push("errorPhoneRegex")
+    }
+}

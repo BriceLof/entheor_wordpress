@@ -105,6 +105,13 @@ function submit_form_add_beneficiaire(){
             "pays" => (isset($_POST['country'])) ? $_POST['country'] : 'FR',
             "city" => (isset($_POST['city'])) ? $_POST['city'] : '',
         );
+
+        foreach($data as $value){
+            if($value == ''){
+                wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#error');
+            }
+        }
+
         // Lancement Curl pour insérer un bénéficiaire
         $url = BASE_URL."api/beneficiaries";
         $auth = "devEntheo:3E5_yu*C";
@@ -213,6 +220,13 @@ function submit_form_devenir_accompagnateur(){
             "prenomConso"=> $_POST['surname'],
             "objectif" => $_POST['objectif']
         );
+
+        foreach($data as $value){
+            if($value == ''){
+                wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#error');
+            }
+        }
+
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
@@ -292,6 +306,13 @@ function submit_form_vae_entreprise(){
             "entreprise"=> $_POST['entreprise'],
             "fonction" => $_POST['fonction']
         );
+
+        foreach($data as $value){
+            if($value == ''){
+                wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#error');
+            }
+        }
+
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
@@ -367,6 +388,12 @@ function submit_form_contact(){
             "email" => (isset($_POST['email'])) ? $_POST['email'] : '',
             "message" => (isset($_POST['message'])) ? $_POST['message'] : '',
         );
+
+        foreach($data as $value){
+            if($value == ''){
+                wp_redirect('http://'.substr($_SESSION['url_before_mer'], 0, -1).'#error');
+            }
+        }
         // Mail envoye par smtp de sentingblue
         $message = "
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>

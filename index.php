@@ -99,6 +99,11 @@ global $wpdb;
         <p class="message_mail_sent">Votre demande d’information a bien été enregistrée.<br>Un consultant vous contacte dans la journée.</p>
     </section>
 
+    <section id="error" class="block_error_mer" style="display: none">
+        <span class="closed_popup">×</span>
+        <p class="message_error">Une erreur s'est produite lors de la validation du formulaire</p>
+    </section>
+
     <section id="three_step">
         <div class="container text-center">
             <h1 class="text-uppercase">Votre diplôme par la VAE en 3 étapes</h1>

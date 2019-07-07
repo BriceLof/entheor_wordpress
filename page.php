@@ -28,6 +28,11 @@ if ($page->post_name == 'contact' ){
             <p class="message_mail_sent">Message envoyé</p>
         </section>
 
+        <section id="error" class="block_error_mer" style="display: none">
+            <span class="closed_popup">×</span>
+            <p class="message_error">Une erreur s'est produite lors de la validation du formulaire</p>
+        </section>
+
         <section class="container" id="block_contact_form">
             <?php
             the_post();

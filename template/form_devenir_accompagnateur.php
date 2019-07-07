@@ -8,8 +8,8 @@
 <input type="text" name="name" placeholder="Nom" required/>
 <input type="text" name="surname" placeholder="Prénom" required/>
 
-<input type="email" name="email" placeholder="Email" required/>
-<input type="tel" name="telephone" placeholder="Téléphone" maxlength="10" required/>
+<input type="email" name="email" placeholder="Email" required class="validEmail"/>
+<input type="tel" name="telephone" placeholder="Téléphone" maxlength="10" required class="validPhone"/>
 
 
 <select name="status" required>
@@ -20,7 +20,7 @@
     <option value="Demandeur d'emploi">Demandeur d'emploi</option>
 </select>
 
-<textarea name="objectif" required rows="5" cols="33" placeholder="Contexte et Objectif de votre démarche ? ">
+<textarea name="objectif" required rows="5" cols="33" placeholder="Contexte et Objectif de votre démarche ? " required>
 </textarea>
 
 <input type="submit" class="btn btn_submit_form_mer" value="Valider">

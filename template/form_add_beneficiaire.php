@@ -14,17 +14,17 @@
 
             <div id="step_1" class="step">
                 <p class="title"></p>
-                <input type="text" name="zip" placeholder="Code postal" maxlength="5" class=""/>
+                <input type="text" name="zip" placeholder="Code postal" maxlength="5" class="" required/>
             </div>
 
             <div id="step_2" class="step d-none">
-                <select name="domaine_activite">
+                <select name="domaine_activite" required>
                     <option value="">Votre domaine d'activité</option>
                     <?php foreach ($domaines as $domaine) : ?>
                         <option value="<?php echo $domaine->nom_dom_vae ?>" data-id="<?php echo $domaine->id_dom_vae ?>"><?php echo $domaine->nom_dom_vae ?></option>
                     <?php endforeach; ?>
                 </select>
-                <select name="metiers">
+                <select name="metiers" required>
                     <option value="">Votre métier de réference</option>
                 </select>
             </div>
@@ -59,7 +59,7 @@
                     <div class="degree_choice col-md-6 field_choice"><p>Bac +3</p></div>
                     <div class="degree_choice col-md-6 field_choice"><p>Master et plus</p></div>
                 </div>
-                <input type="hidden" name="degree" value=""/>
+                <input type="hidden" name="degree" value="" required/>
             </div>
 
             <div id="step_6" class="step d-none">
@@ -78,20 +78,20 @@
                     <div class="reason_choice col-md-4 field_choice"><p>Diplôme nécessaire</p></div>
                     <div class="reason_choice col-md-12"><input type="text" name="reason_other" placeholder="Autre"/></div>
                 </div>
-                <input type="hidden" name="reason" value=""/>
+                <input type="hidden" name="reason" value="" required/>
             </div>
 
             <div id="step_8" class="step d-none">
                 <p class="title">Renseignez vos coordonées, un consultant vous contact dans l'heure</p>
-                <select name="civility">
+                <select name="civility" required>
                     <option>Civilité</option>
                     <option value="M.">M.</option>
                     <option value="Mme">Mme</option>
                     <option value="Mlle">Mlle</option>
                 </select>
-                <input type="text" name="name" placeholder="Nom"/>
-                <input type="text" name="surname" placeholder="Prénom" />
-                <select name="time_preference">
+                <input type="text" name="name" placeholder="Nom" required/>
+                <input type="text" name="surname" placeholder="Prénom" required/>
+                <select name="time_preference" required>
                     <option>Plage horaire préféré</option>
                     <option value="Avant 12 heures">Avant 12 heures</option>
                     <option value="Entre 12 et 14 heures">Entre 12 et 14 heures</option>
@@ -103,8 +103,8 @@
 
             <div id="step_9" class="step d-none">
                 <p class="title">Renseignez vos coordonées, un consultant vous contact dans l'heure</p>
-                <input type="email" name="email" placeholder="Email"/>
-                <input type="tel" name="telephone" placeholder="Téléphone" maxlength="10"/>
+                <input type="email" name="email" placeholder="Email" required class="validEmail"/>
+                <input type="tel" name="telephone" placeholder="Téléphone" maxlength="10" required class="validPhone"/>
             </div>
         </div>
         <div class="modal-footer" >

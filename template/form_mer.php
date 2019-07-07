@@ -12,8 +12,8 @@ $idOffice = get_query_var('idOffice');
 <input type="text" name="name" placeholder="Nom" required/>
 <input type="text" name="surname" placeholder="Prénom" required/>
 
-<input type="email" name="email" placeholder="Email" required/>
-<input type="tel" name="telephone" placeholder="Téléphone" maxlength="10" required/>
+<input type="email" name="email" placeholder="Email" required class="validEmail"/>
+<input type="tel" name="telephone" placeholder="Téléphone" maxlength="10" required class="validPhone"/>
 
 
 <?php if ($idOffice != ID_BUREAU_DISTANCE) : ?>

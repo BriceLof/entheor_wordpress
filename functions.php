@@ -146,7 +146,7 @@ function submit_form_add_beneficiaire(){
             <p>Alerte 8</p>
             <p>Voici les informations du contact : </p>
             <ul>
-                <li>Date et heure de la mise en relation : ".date('d/m/Y à h:i')."</li>
+                <li>Date et heure de la mise en relation : ".date('d/m/Y à H:i')."</li>
                 <li>Origine : ".$origine."</li>
                 <li>Civilité, nom et prénom : ".ucfirst($data['civiliteConso'])." ".ucfirst($data['nomConso'])." ".ucfirst($data['prenomConso'])."</li>
                 <li>Statut : ".ucfirst($data['statut'])."</li>
@@ -237,7 +237,7 @@ function submit_form_devenir_accompagnateur(){
             <p>Alerte 8</p>
             <p>Voici les informations du contact : </p>
             <ul>
-                <li>Date et heure de la demande : ".date('d/m/Y à h:i')."</li>
+                <li>Date et heure de la demande : ".date('d/m/Y à H:i')."</li>
                 <li>Origine : ".$data['origine']."</li>
                 <li>Civilité, nom et prénom : ".ucfirst($data['civiliteConso'])." ".ucfirst($data['nomConso'])." ".ucfirst($data['prenomConso'])."</li>
                 <li>Statut : ".ucfirst($data['statut'])."</li>
@@ -323,7 +323,7 @@ function submit_form_vae_entreprise(){
             <img src='https://entheor.com/wp-content/themes/entheor/assets/image/logo-entheor.png'>
             <p>Voici les informations du contact : </p>
             <ul>
-                <li>Date et heure de la demande : ".date('d/m/Y à h:i')."</li>
+                <li>Date et heure de la demande : ".date('d/m/Y à H:i')."</li>
                 <li>Origine : ".$data['origine']."</li>
                 <li>Civilité, nom et prénom : ".ucfirst($data['civiliteConso'])." ".ucfirst($data['nomConso'])." ".ucfirst($data['prenomConso'])."</li>
                 <li>Statut : ".ucfirst($data['statut'])."</li>

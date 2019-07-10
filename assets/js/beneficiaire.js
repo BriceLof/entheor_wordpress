@@ -270,7 +270,7 @@ function verifMail(val)
 
 function verifPhone(val)
 {
-    var regex = /^((\+)33|0)[1-9](\d{2}){4}$/;
+    var regex = /^((\+)33|06|07|01)[0-9]{8}$/;
     if(!regex.test(val))
     {
         arrayError.push("errorPhoneRegex")

@@ -107,34 +107,32 @@ global $wpdb;
     <section id="three_step">
         <div class="container text-center">
             <h1 class="text-uppercase">Votre diplôme par la VAE en 3 étapes</h1>
-            <p class="introduction">La VAE est un droit qui vous permet de faire valider les acquis de votre expérience
-                en vue d'obtenir un diplôme, un titre ou un certificat de qualification. L'accompagnement à la VAE peut
-                se dérouler pendant le temps de travail ou hors temps de travail, en présentiel ou à distance et est
-                ouverte aux expatriés.</p>
+            <p class="introduction">
+                La VAE est un droit qui vous permet de faire valider les acquis de votre expérience en vue d'obtenir un diplôme, un titre ou un certificat de qualification. C’est une démarche ouverte à tous, quel que soit votre âge, votre niveau d’étude ou de formation, votre son statut.
+                <br><br>L'accompagnement à la VAE peut se dérouler pendant le temps de travail ou hors temps de travail, en présentiel ou à distance et est ouverte aux expatriés.
+            </p>
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <picture>
                         <img src="<?php echo get_template_directory_uri() ?>/assets/image/icone-cv.png"
                              alt="Un accompagnement vae pour la rédaction de votre dossier vae livret 1"/>
                     </picture>
-                    <p class="description_img"><span class="text-uppercase title">Livret 1 : votre cv </span><br><span
-                                class="sub_title">Rendez votre démarche VAE officielle</span></p>
+                    <p class="description_img"><span class="text-uppercase title">Livret 1</span><br><span class="sub_title">Dossier récapitulatif de votre expérience professionnelle.<br>Il permet d’obtenir la recevabilité à la demande de VAE.</span></p>
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <picture>
                         <img src="<?php echo get_template_directory_uri() ?>/assets/image/icone-livret2.png"
                              alt="Justifiez de votre expérience professionnelle grâce au dossier vae livret 2"/>
                     </picture>
-                    <p class="description_img"><span class="text-uppercase title">Livret 2 : vos compétences cv</span>
-                        <br><span class="sub_title">Rendez votre démarche VAE officielle</span></p>
+                    <p class="description_img"><span class="text-uppercase title">Livret 2</span><br><span class="sub_title">Vous décrivez  de façon détaillée dans le livret 2<br>votre expérience et vos compétences.</span></p>
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <picture>
                         <img src="<?php echo get_template_directory_uri() ?>/assets/image/icone-jury.png"
                              alt="Décrochez votre validation des acquis (VAE)"/>
                     </picture>
-                    <p class="description_img"><span class="text-uppercase title">Passage devant le jury</span>
-                        <br><span class="sub_title">Présenter votre dossier aux jurés</span></p>
+                    <p class="description_img"><span class="text-uppercase title">Oral devant le jury</span>
+                        <br><span class="sub_title">Présentation de votre dossier devant un jury<br>composé d’enseignants et de professionnels.</span></p>
                 </div>
             </div>
             <button class="btn" id="btn_launch_form">+ Demande d'information</button>

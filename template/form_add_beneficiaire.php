@@ -14,7 +14,7 @@
 
             <div id="step_1" class="step">
                 <p class="title"></p>
-                <input type="text" name="zip" placeholder="Code postal" maxlength="5" class="" required/>
+                <input type="text" name="zip_conso" placeholder="Code postal" maxlength="5" class="" required/>
             </div>
 
             <div id="step_2" class="step d-none">

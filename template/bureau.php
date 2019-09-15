@@ -170,37 +170,46 @@ if ($err) {
                             </div>
 
                             <div id="tab_review" class="tab">
+                                <?php $arrayReviewsNewestToOlder = array(); ?>
                                 <?php foreach($result->beneficiaires as $beneficiaire) : ?>
                                     <?php if((count($beneficiaire->avis) > 0) && ($beneficiaire->avis[0]->autorisationPublicationEntheor)) : ?>
-                                        <article>
-                                            <?php
-                                            $datePublishRaw = $beneficiaire->avis[0]->date;
-                                            $datePublishFinal = new DateTime($datePublishRaw);
-                                            ?>
-                                            <p class="date">Avis VAE publié le <?php echo $datePublishFinal->format('d/m/Y') ?></p>
-                                            <div class="note stars">
-                                                <?php for ($j = 0; $j < 5; $j++) : ?>
-                                                    <?php if ($j < $beneficiaire->avis[0]->noteGlobale) : ?>
-                                                        <span class="star on"></span>
-                                                    <?php else : ?>
-                                                        <span class="star"></span>
-                                                    <?php endif; ?>
-                                                <?php endfor; ?>
-                                            </div>
-                                            <p class="reviewer">
-                                                <i>
-                                                    <b>
-                                                        <span class="name"><?php echo $beneficiaire->prenomConso ?></span>,
-                                                        <span class="reviewer_domain">VAE <?php echo $beneficiaire->domaineVae ?></span>
-                                                    </b>
-                                                </i>
-                                            </p>
-
-                                            <p class="detail_review">
-                                                <i>"<?php echo $beneficiaire->avis[0]->commentaireGeneral ?>"</i>
-                                            </p>
-                                        </article>
+                                        <?php $arrayReviewsNewestToOlder[$beneficiaire->avis[0]->id] = array('review' => $beneficiaire->avis[0], 'beneficiaire' =>  $beneficiaire); ?>
                                     <?php endif; ?>
+                                <?php endforeach; ?>
+
+                                <?php
+                                    // ordonner le tableau du plus recent au plus ancien en fonction de l'index
+                                    rsort($arrayReviewsNewestToOlder);
+                                ?>
+                                <?php foreach($arrayReviewsNewestToOlder as $review) : ?>
+                                    <article>
+                                        <?php
+                                        $datePublishRaw = $review['review']->date;
+                                        $datePublishFinal = new DateTime($datePublishRaw);
+                                        ?>
+                                        <p class="date">Avis VAE publié le <?php echo $datePublishFinal->format('d/m/Y') ?></p>
+                                        <div class="note stars">
+                                            <?php for ($j = 0; $j < 5; $j++) : ?>
+                                                <?php if ($j < $review['review']->noteGlobale) : ?>
+                                                    <span class="star on"></span>
+                                                <?php else : ?>
+                                                    <span class="star"></span>
+                                                <?php endif; ?>
+                                            <?php endfor; ?>
+                                        </div>
+                                        <p class="reviewer">
+                                            <i>
+                                                <b>
+                                                    <span class="name"><?php echo $review['beneficiaire']->prenomConso ?></span>,
+                                                    <span class="reviewer_domain">VAE <?php echo $review['beneficiaire']->domaineVae ?></span>
+                                                </b>
+                                            </i>
+                                        </p>
+
+                                        <p class="detail_review">
+                                            <i>"<?php echo $review['review']->commentaireGeneral ?>"</i>
+                                        </p>
+                                    </article>
                                 <?php endforeach; ?>
                             </div>
                         </div>
